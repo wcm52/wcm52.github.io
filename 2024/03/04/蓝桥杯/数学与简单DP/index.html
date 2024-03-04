@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="google-site-verification" content="bybDl7crMHVqNN1J7f-Y_CEFbc2Hlo4IdKePDAGM52g" />
+<meta name="msvalidate.01" content="E472E4B2174B4AF4C43D027E30CC7B91" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/book32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/book16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wcm52.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":{"valine":null,"order":-1},"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1205. 买不到的数目题目小明开了一家糖果店。 他别出心裁：把水果糖包成4颗一包和7颗一包的两种。 糖果不能拆包卖。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="acwing 蓝桥杯辅导课数学与简单DP章节习题">
+<meta property="og:url" content="https://wcm52.github.io/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/index.html">
+<meta property="og:site_name" content="xinStar">
+<meta property="og:description" content="1205. 买不到的数目题目小明开了一家糖果店。 他别出心裁：把水果糖包成4颗一包和7颗一包的两种。 糖果不能拆包卖。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:\Users\%E9%91%AB%E9%9C%9C\Desktop\FE61C4FA79123E4438C742E76147B4CC.jpg">
+<meta property="og:image" content="https://s2.loli.net/2024/03/04/EjGYrD15Hfebz4P.png">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2019/09/12/19_a8509f26d5-1.gif">
+<meta property="og:image" content="https://s2.loli.net/2024/03/04/SRQenDrmKCG2qH9.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/04/GCx1VjTwrY5y69A.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/04/j3pR2zxeCDrSLUT.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/04/FZEPbUjAGqxnMdY.png">
+<meta property="article:published_time" content="2024-03-04T01:53:20.471Z">
+<meta property="article:modified_time" content="2024-03-04T01:53:20.828Z">
+<meta property="article:author" content="xinStar">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Acwing">
+<meta property="article:tag" content="数学与简单DP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\%E9%91%AB%E9%9C%9C\Desktop\FE61C4FA79123E4438C742E76147B4CC.jpg">
+
+<link rel="canonical" href="https://wcm52.github.io/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>acwing 蓝桥杯辅导课数学与简单DP章节习题 | xinStar</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xinStar</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wcm52.github.io/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.png">
+      <meta itemprop="name" content="xinStar">
+      <meta itemprop="description" content="热爱漫无边际，生命自有分寸">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xinStar">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          acwing 蓝桥杯辅导课数学与简单DP章节习题
+        </h1>
+
+        <div class="post-meta">
+		  
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-04 09:53:20" itemprop="dateCreated datePublished" datetime="2024-03-04T09:53:20+08:00">2024-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/%E4%B9%A0%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">习题</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/%E4%B9%A0%E9%A2%98/%E8%93%9D%E6%A1%A5%E6%9D%AF/" itemprop="url" rel="index"><span itemprop="name">蓝桥杯</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1205-买不到的数目"><a href="#1205-买不到的数目" class="headerlink" title="1205. 买不到的数目"></a>1205. 买不到的数目</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1207/">题目</a></h3><p>小明开了一家糖果店。</p>
+<p>他别出心裁：把水果糖包成4颗一包和7颗一包的两种。</p>
+<p>糖果不能拆包卖。<span id="more"></span></p>
+<p>小朋友来买糖的时候，他就用这两种包装来组合。</p>
+<p>当然有些糖果数目是无法组合出来的，比如要买 10 颗糖。</p>
+<p>你可以用计算机测试一下，在这种包装情况下，最大不能买到的数量是17。</p>
+<p>大于17的任何数字都可以用4和7组合出来。</p>
+<p>本题的要求就是在已知两个包装的数量时，求最大不能组合出的数字。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>两个正整数 <em>n</em>,<em>m</em>，表示每种包装中糖的颗数。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>一个正整数，表示最大不能买到的糖数。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>2≤<em>n</em>,<em>m</em>≤1000，<br> 保证数据一定有解。</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4 7</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">17</span><br></pre></td></tr></table></figure>
+
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>输入两个数，求这两个数最大不能组合出的数字</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>先用暴力打表找出规律，再直接带规律就行</p>
+<p>用dfs</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> m,n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span>(x &gt;= m &amp;&amp; <span class="built_in">dfs</span>(x-m)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span>(x &gt;= n &amp;&amp; <span class="built_in">dfs</span>(x-n)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; m &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">1000</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="built_in">dfs</span>(i)) res=i;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入 输出</span><br><span class="line">3 2  1</span><br><span class="line">3 4  5</span><br><span class="line">3 5  7</span><br><span class="line">3 7  11</span><br><span class="line">3 8  13</span><br><span class="line">m n  res</span><br></pre></td></tr></table></figure>
+
+<p>当m&#x3D;3时，res&#x3D;2n-3</p>
+<figure class="highlight plaintext"><figcaption><span>输出</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5 2 3</span><br><span class="line">5 3 7</span><br><span class="line">5 4 11</span><br><span class="line">5 6 19</span><br><span class="line">5 7 23</span><br><span class="line">m n  res</span><br></pre></td></tr></table></figure>
+
+<p>当m&#x3D;5时，res&#x3D;4n-5;</p>
+<p>所以规律为</p>
+<p>res &#x3D; n(m-1) - m &#x3D; nm - n - m;</p>
+<h3 id="最终代码"><a href="#最终代码" class="headerlink" title="最终代码"></a>最终代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> m,n;</span><br><span class="line">    cin &gt;&gt; m &gt;&gt; n;</span><br><span class="line">    cout &lt;&lt; m*n-m-n &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1211-蚂蚁感冒"><a href="#1211-蚂蚁感冒" class="headerlink" title="1211. 蚂蚁感冒"></a>1211. 蚂蚁感冒</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1213/">题目</a></h3><p>长 100厘米的细长直杆子上有 <em>n</em>只蚂蚁。它们的头有的朝左，有的朝右。 每只蚂蚁都只能沿着杆子向前爬，速度是 1 厘米&#x2F;秒。</p>
+<p>当两只蚂蚁碰面时，它们会同时掉头往相反的方向爬行。这些蚂蚁中，有 1 只蚂蚁感冒了。</p>
+<p>并且在和其它蚂蚁碰面时，会把感冒传染给碰到的蚂蚁。</p>
+<p>请你计算，当所有蚂蚁都爬离杆子时，有多少只蚂蚁患上了感冒。</p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个整数 <em>n</em>, 表示蚂蚁的总数。接着的一行是 <em>n</em> 个用空格分开的整数 <em>X**i</em>, <em>X**i</em> 的绝对值表示蚂蚁离开杆子左边端点的距离。正值表示头朝右，负值表示头朝左，数据中不会出现 0 值，也不会出现两只蚂蚁占用同一位置。</p>
+<p>其中，第一个数据代表的蚂蚁感冒了。</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出1个整数，表示最后感冒蚂蚁的数目。</p>
+<h4 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h4><p>1&lt;<em>n</em>&lt;50</p>
+<p>,<br>0&lt;|<em>X**i</em>|&lt;100</p>
+<h4 id="输入样例1："><a href="#输入样例1：" class="headerlink" title="输入样例1："></a>输入样例1：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">5 -2 8</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例1："><a href="#输出样例1：" class="headerlink" title="输出样例1："></a>输出样例1：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例2："><a href="#输入样例2：" class="headerlink" title="输入样例2："></a>输入样例2：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">-10 8 -20 12 25</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例2："><a href="#输出样例2：" class="headerlink" title="输出样例2："></a>输出样例2：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p>一根杆子上有n只蚂蚁，输入n和n只蚂蚁，正数表示向右，负数表示向左，数字代表距离，其中第一只蚂蚁感冒，当患有感冒的蚂蚁与没有感冒的蚂蚁碰上时，两只蚂蚁都会感冒，然后两只蚂蚁都会掉头，输出最后有多少只蚂蚁感冒。</p>
+<h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>当两只蚂蚁<strong>相碰后掉头</strong>，就相当于这两只蚂蚁<strong>不掉头直接穿过</strong>，所以我们直接简化成所有蚂蚁都不掉头，而是直接穿过</p>
+<p>这样向右和向左就分别有两种情况满足条件</p>
+<p><img src="C:\Users\鑫霜\Desktop\FE61C4FA79123E4438C742E76147B4CC.jpg" alt="img"></p>
+<p>可以分别统计右边向左走和左边向右走的蚂蚁数目，</p>
+<p>当蚂蚁向左走时，如果一只左边向右走的蚂蚁都没有，则不会相撞，最后只有一只蚂蚁感冒。</p>
+<p>其他情况则一定有一只蚂蚁从左边向右走，后面所有右边向左走的蚂蚁都要感冒，所以最后的蚂蚁数量直接是left+right+1</p>
+<p>当蚂蚁向右走时同理可得。</p>
+<h3 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">55</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> x[N];<span class="comment">//x[N]存输入的蚂蚁位置及方向</span></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        cin &gt;&gt; x[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> left=<span class="number">0</span>,right=<span class="number">0</span>;<span class="comment">//left表示左边向右走，right表示右边向左走</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">abs</span>(x[i]) &gt; <span class="built_in">abs</span>(x[<span class="number">0</span>]) &amp;&amp; x[i] &lt; <span class="number">0</span> ) right++;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">abs</span>(x[i]) &lt; <span class="built_in">abs</span>(x[<span class="number">0</span>]) &amp;&amp; x[i] &gt; <span class="number">0</span>) left++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>((x[<span class="number">0</span>] &gt; <span class="number">0</span> &amp;&amp; right == <span class="number">0</span>) || (x[<span class="number">0</span>] &lt; <span class="number">0</span> &amp;&amp; left ==<span class="number">0</span>)) cout &lt;&lt; <span class="number">1</span> &lt;&lt; endl;<span class="comment">//当一次都没有相碰时，只有一只蚂蚁感冒</span></span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; left + right + <span class="number">1</span> &lt;&lt; endl;<span class="comment">//因为最开始还有一只蚂蚁感冒，所以要加上最开始的一只蚂蚁</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​          </p>
+<h2 id="1216-饮料换购"><a href="#1216-饮料换购" class="headerlink" title="1216. 饮料换购"></a>1216. 饮料换购</h2><h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1218/">题目</a></h3><p>乐羊羊饮料厂正在举办一次促销优惠活动。乐羊羊C型饮料，凭3个瓶盖可以再换一瓶C型饮料，并且可以一直循环下去(但不允许暂借或赊账)。</p>
+<p>请你计算一下，如果小明不浪费瓶盖，尽量地参加活动，那么，对于他初始买入的 <em>n</em> 瓶饮料，最后他一共能喝到多少瓶饮料。</p>
+<h4 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入一个整数 <em>n</em>,表示初始买入的饮料数量。</p>
+<h4 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示一共能够喝到的饮料数量。</p>
+<h4 id="数据范围-2"><a href="#数据范围-2" class="headerlink" title="数据范围"></a>数据范围</h4><p>0&lt;<em>n</em>&lt;10000</p>
+<h4 id="输入样例：-1"><a href="#输入样例：-1" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-1"><a href="#输出样例：-1" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">149</span><br></pre></td></tr></table></figure>
+
+<h3 id="相关代码-1"><a href="#相关代码-1" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,cnt=<span class="number">0</span>;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> m=n;</span><br><span class="line">    <span class="keyword">while</span>(n/<span class="number">3</span> &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">        cnt += n/<span class="number">3</span>;</span><br><span class="line">        n = n/<span class="number">3</span> + n%<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; cnt+m &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="2-01背包问题"><a href="#2-01背包问题" class="headerlink" title="2. 01背包问题"></a>2. 01背包问题</h2><h3 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/2/">题目</a></h3><p>有 <em>N</em> 件物品和一个容量是 <em>V</em> 的背包。每件物品只能使用一次。第 <em>i</em> 件物品的体积是 <em>v**i</em>，价值是 <em>w**i</em>。</p>
+<p>求解将哪些物品装入背包，可使这些物品的总体积不超过背包容量，且总价值最大。 输出最大价值。</p>
+<h4 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行两个整数，<em>N</em>，<em>V</em>，用空格隔开，分别表示物品数量和背包容积。接下来有 <em>N</em> 行，每行两个整数 <em>v**i</em>,<em>w**i</em>，用空格隔开，分别表示第 <em>i</em> 件物品的体积和价值。</p>
+<h4 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示最大价值。</p>
+<h4 id="数据范围-3"><a href="#数据范围-3" class="headerlink" title="数据范围"></a>数据范围</h4><p>0&lt;<em>N</em>,<em>V</em>≤1000<br>0&lt;<em>v**i</em>,<em>w**i</em>≤1000</p>
+<h4 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 5</span><br><span class="line">1 2</span><br><span class="line">2 4</span><br><span class="line">3 4</span><br><span class="line">4 5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-2"><a href="#输出样例：-2" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h3><p><img src="https://s2.loli.net/2024/03/04/EjGYrD15Hfebz4P.png" alt="image-20220224214216658"></p>
+<p><code>f[i][j]</code>代表前 i 个物品，总体积为 j 的物品价值，每一个<code>f[i][j]</code>要与前面的<code>f[i-1][j]</code>相联系</p>
+<ul>
+<li><p>如果选第 i 个物品，那么<code>f[i][j]=f[i-1][j-v[i]]+w[i]</code>，即<strong>前 i 个物品总体积为 j 的物品价值就是之前 i-1 个物品，体积为 j-v[i] 的物品的价值加上第 i 个物品的价值 w[i]</strong></p>
+</li>
+<li><p>如果不选第 i 个物品，那么<code>f[i][j]=f[i-1][j]</code>，即价值就是前 i-1 个物品的价值</p>
+</li>
+</ul>
+<p>而我们要求的是最优解，就在两者之间取最大值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> f[N][N];<span class="comment">//f[i][j]表示前i个物品，总体积为j的物品的价值</span></span><br><span class="line"><span class="type">int</span> v[N],w[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;<span class="comment">//n代表数量，m代表体积</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) cin &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=m;j++)&#123;</span><br><span class="line">            f[i][j]=f[i<span class="number">-1</span>][j];</span><br><span class="line">            <span class="keyword">if</span>(j&gt;=v[i])&#123;</span><br><span class="line">                f[i][j]=<span class="built_in">max</span>(f[i][j],f[i<span class="number">-1</span>][j-v[i]]+w[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; f[n][m] &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优化版本</strong></p>
+<p>因为<code>f[i][j]</code>求的是每一个体积的最优解，而我们只需要求体积为 m 的最优解，所以可以将二维简化为一维</p>
+<p><code>f[j]</code>表示的是，n 件物品，体积为 j 的最大价值</p>
+<p>体积必须要从 m 开始列举</p>
+<ul>
+<li>二维情况下，每一个<code>f[i][j]</code>都是由上一轮 i-1 状态得来的</li>
+<li>一维情况下，如果从小到大列举，第 i 个体积较大的价值还是由当前的第 i 轮物品推出来的，而不是 i-1 个物品。即在第 i 轮中，算过第 i 个较小体积物品的价值后，后面算较大的体积的物品价值时还是用的当前第 i 轮的较小的物品价值，本来用的应该是上一轮较小的物品价值（因为有两重循环）</li>
+<li>直接逆序后，每一个较小的都是上一轮的，就不会出现这种问题</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/1374/">下面为优化参考</a></p>
+<p>将状态f[i][j]优化到一维f[j]，实际上只需要做一个等价变形。</p>
+<p>为什么可以这样变形呢？我们定义的状态f[i][j]可以求得任意合法的i与j最优解，但题目只需要求得最终状态f[n][m]，因此我们只需要一维的空间来更新状态。</p>
+<p>（1）状态f[j]定义：N件物品，背包容量j下的最优解。</p>
+<p>（2）注意枚举背包容量j必须从m开始。</p>
+<p>（3）为什么一维情况下枚举背包容量需要逆序？在二维情况下，状态f[i][j]是由上一轮i - 1的状态得来的，f[i][j]与f[i - 1][j]是独立的。而优化到一维后，如果我们还是正序，则有f[较小体积]更新到f[较大体积]，则有可能本应该用第i-1轮的状态却用的是第i轮的状态。</p>
+<p>（4）例如，一维状态第i轮对体积为 3</p>
+<p>的物品进行决策，则f[7]由f[4]更新而来，这里的f[4]正确应该是f[i - 1][4]，但从小到大枚举j这里的f[4]在第i轮计算却变成了f[i][4]。当逆序枚举背包容量j时，我们求f[7]同样由f[4]更新，但由于是逆序，这里的f[4]还没有在第i轮计算，所以此时实际计算的f[4]仍然是f[i - 1][4]。</p>
+<p>（5）简单来说，一维情况正序更新状态f[j]需要用到前面计算的状态已经被「<strong>污染</strong>」，逆序则不会有这样的问题。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> f[N];<span class="comment">//f[j]总体积为j的物品的价值</span></span><br><span class="line"><span class="type">int</span> v[N],w[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) cin &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=m;j&gt;=v[i];j--)&#123;<span class="comment">//体积必须从最大开始</span></span><br><span class="line">            f[j]=<span class="built_in">max</span>(f[j],f[j-v[i]]+w[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; f[m] &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/1374/">参考深蓝</a>加上自己的一点小理解</p>
+<h2 id="1015-摘花生"><a href="#1015-摘花生" class="headerlink" title="1015. 摘花生"></a>1015. 摘花生</h2><h3 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1017/">题目</a></h3><p>Hello Kitty想摘点花生送给她喜欢的米老鼠。</p>
+<p>她来到一片有网格状道路的矩形花生地(如下图)，从西北角进去，东南角出来。</p>
+<p>地里每个道路的交叉点上都有种着一株花生苗，上面有若干颗花生，经过一株花生苗就能摘走该它上面所有的花生。</p>
+<p>Hello Kitty只能向东或向南走，不能向西或向北走。</p>
+<p>问Hello Kitty最多能够摘到多少颗花生。</p>
+<p><img src="https://cdn.acwing.com/media/article/image/2019/09/12/19_a8509f26d5-1.gif" alt="1.gif"> </p>
+<h4 id="输入格式-4"><a href="#输入格式-4" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行是一个整数T，代表一共有多少组数据。</p>
+<p>接下来是T组数据。</p>
+<p>每组数据的第一行是两个整数，分别代表花生苗的行数R和列数 C。</p>
+<p>每组数据的接下来R行数据，从北向南依次描述每行花生苗的情况。每行数据有C个整数，按从西向东的顺序描述了该行每株花生苗上的花生数目M。</p>
+<h4 id="输出格式-4"><a href="#输出格式-4" class="headerlink" title="输出格式"></a>输出格式</h4><p>对每组输入数据，输出一行，内容为Hello Kitty能摘到得最多的花生颗数。</p>
+<h4 id="数据范围-4"><a href="#数据范围-4" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>T</em>≤100,<br>1≤<em>R</em>,<em>C</em>≤100,<br>0≤<em>M</em>≤1000</p>
+<h4 id="输入样例：-2"><a href="#输入样例：-2" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">2 2</span><br><span class="line">1 1</span><br><span class="line">3 4</span><br><span class="line">2 3</span><br><span class="line">2 3 4</span><br><span class="line">1 6 5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-3"><a href="#输出样例：-3" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h3><p><img src="https://s2.loli.net/2024/03/04/SRQenDrmKCG2qH9.png" alt="image-20220224214139664"></p>
+<p>用<code>f[i][j]</code>存从(1,1)到 (i,j) 的最大花生数，<strong>每一个<code>f[i][j]</code>都是由上一个<code>f[i-1][j]</code>或者<code>f[i][j-1]</code>移动一步得来的</strong>，所以<code>f[i][j]</code>就是两者之间的最大值加上 (i,j) 的花生数即可</p>
+<h3 id="相关代码-2"><a href="#相关代码-2" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">110</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> f[N][N];<span class="comment">//f[i][j]存从(1,1)到(i,j)的最大值</span></span><br><span class="line"><span class="type">int</span> w[N][N];</span><br><span class="line"><span class="type">int</span> m,n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        cin &gt;&gt; m &gt;&gt; n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">                cin &gt;&gt; w[i][j];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">                f[i][j]=<span class="built_in">max</span>(f[i][j<span class="number">-1</span>],f[i<span class="number">-1</span>][j])+w[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; f[m][n] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="895-最长上升子序列"><a href="#895-最长上升子序列" class="headerlink" title="895. 最长上升子序列"></a>895. 最长上升子序列</h2><h3 id="题目-5"><a href="#题目-5" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/897/">题目</a></h3><p>给定一个长度为 <em>N</em> 的数列，求数值严格单调递增的子序列的长度最长是多少。</p>
+<h4 id="输入格式-5"><a href="#输入格式-5" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>N</em>。</p>
+<p>第二行包含 <em>N</em> 个整数，表示完整序列。</p>
+<h4 id="输出格式-5"><a href="#输出格式-5" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示最大长度。</p>
+<h4 id="数据范围-5"><a href="#数据范围-5" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>N</em>≤1000，<br>−10的9次方≤数列中的数≤10的9次方</p>
+<h4 id="输入样例：-3"><a href="#输入样例：-3" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">3 1 2 1 8 5 6</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-4"><a href="#输出样例：-4" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h3><p><img src="https://s2.loli.net/2024/03/04/GCx1VjTwrY5y69A.png" alt="image-20220224202342072"></p>
+<ul>
+<li><p><code>f[i]</code>表示从<code>a[1]</code>到<code>a[i]</code>的最大单调递增子序列的值</p>
+</li>
+<li><p>在状态计算时，我们从<code>a[i]</code>的前一个元素<code>a[k]</code>（倒数第二个元素）开始考虑，当满足<code>a[k]&lt;a[i]</code>时，则<code>f[i]=f[k]+1</code></p>
+</li>
+<li><p>由于<strong>倒数第二个元素的值不确定，有多种方案</strong>，可能为<code>a[1]</code>到<code>a[i-1]</code>中的一个，所以我们再用一重循环来找出这些所有情况的最大值</p>
+</li>
+</ul>
+<h3 id="相关代码-3"><a href="#相关代码-3" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> f[N];<span class="comment">//f[i]表示从1到i的最大单调递增序列的值</span></span><br><span class="line"><span class="type">int</span> w[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) cin &gt;&gt; w[i];</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        f[i]=<span class="number">1</span>;<span class="comment">//当只有i一个元素时，结果为1</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;i;j++)<span class="comment">//找出倒数第二个元素为1到i-1中的一个时，f[i]的最大值</span></span><br><span class="line">            <span class="comment">//（每一个f[j]在第i轮中都记录了1到j的最大单调递增序列的值，所以在i+1轮时，当倒数第二个元素是a[j]时，如果满足倒数第一个元素大于倒数第二个元素，f[i+1]的值直接就是f[i+1]与f[j]+1的最大值）</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(w[i]&gt;w[j]) f[i]=<span class="built_in">max</span>(f[i],f[j]+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        res=<span class="built_in">max</span>(res,f[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1212-地宫取宝"><a href="#1212-地宫取宝" class="headerlink" title="1212. 地宫取宝"></a>1212. 地宫取宝</h2><h3 id="题目-6"><a href="#题目-6" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1214/">题目</a></h3><p>X 国王有一个地宫宝库，是 <em>n</em>×<em>m</em> 个格子的矩阵，每个格子放一件宝贝，每个宝贝贴着价值标签。地宫的入口在左上角，出口在右下角。</p>
+<p>小明被带到地宫的入口，国王要求他只能向右或向下行走。走过某个格子时，如果那个格子中的宝贝价值比小明手中任意宝贝价值都大，小明就可以拿起它（当然，也可以不拿）。</p>
+<p>当小明走到出口时，如果他手中的宝贝恰好是 <em>k</em> 件，则这些宝贝就可以送给小明。</p>
+<p>请你帮小明算一算，在给定的局面下，他有多少种不同的行动方案能获得这 <em>k</em></p>
+<p> 件宝贝。</p>
+<h4 id="输入格式-6"><a href="#输入格式-6" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行 3 个整数，<em>n</em>,<em>m</em>,<em>k</em>，含义见题目描述。</p>
+<p>接下来 <em>n</em> 行，每行有 <em>m</em> 个整数 <em>C**i</em></p>
+<p> 用来描述宝库矩阵每个格子的宝贝价值。</p>
+<h4 id="输出格式-6"><a href="#输出格式-6" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示正好取 <em>k</em> 个宝贝的行动方案数。</p>
+<p>该数字可能很大，输出它对 1000000007 取模的结果。</p>
+<h4 id="数据范围-6"><a href="#数据范围-6" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>n</em>,<em>m</em>≤50,<br>1≤<em>k</em>≤12,<br>0≤<em>C**i</em>≤12</p>
+<h4 id="输入样例1：-1"><a href="#输入样例1：-1" class="headerlink" title="输入样例1："></a>输入样例1：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 2 2</span><br><span class="line">1 2</span><br><span class="line">2 1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例1：-1"><a href="#输出样例1：-1" class="headerlink" title="输出样例1："></a>输出样例1：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例2：-1"><a href="#输入样例2：-1" class="headerlink" title="输入样例2："></a>输入样例2：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 3 2</span><br><span class="line">1 2 3</span><br><span class="line">2 1 5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例2：-1"><a href="#输出样例2：-1" class="headerlink" title="输出样例2："></a>输出样例2：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">14</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h3><p>（集合要保证不重不漏）</p>
+<p>用一个四重数组<code>f[i][i][k][c]</code>表示所有从起点走到<code>(i,j)</code>,且已经取了 k 件物品，最后一个数是 c 的合法方案数</p>
+<p><img src="https://s2.loli.net/2024/03/04/j3pR2zxeCDrSLUT.png" alt="image-20220226203753936"></p>
+<ul>
+<li>将<code>f[i][j][k][c]</code>的集合划分成如图几个部分，分别考虑每个部分的前一步</li>
+</ul>
+<h3 id="相关代码-4"><a href="#相关代码-4" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">55</span>,MOD=<span class="number">1000000007</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> f[N][N][<span class="number">13</span>][<span class="number">14</span>];<span class="comment">//</span></span><br><span class="line"><span class="type">int</span> w[N][N];</span><br><span class="line"><span class="type">int</span> n,m,k;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> res;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= m;j++)&#123;</span><br><span class="line">            cin &gt;&gt; w[i][j];</span><br><span class="line">            w[i][j]++;</span><br><span class="line">            <span class="comment">//因为初始化不选第一个宝贝是时，要保证价值是-1，这样后面如果有价值为0的才能选上</span></span><br><span class="line">            <span class="comment">//因为数组下标不能为负数，那就每个价值加1</span></span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    f[<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>][w[<span class="number">1</span>][<span class="number">1</span>]] = <span class="number">1</span>;<span class="comment">//选第一个宝贝</span></span><br><span class="line">    f[<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;<span class="comment">//不选第一个宝贝</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i == <span class="number">1</span> &amp;&amp; j == <span class="number">1</span>) <span class="keyword">continue</span>;<span class="comment">//第一个物品已经进行了初始化，不用考虑</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> u = <span class="number">0</span>; u &lt;= k; u++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> v = <span class="number">0</span>; v &lt;= <span class="number">13</span>; v++)&#123;</span><br><span class="line">                    <span class="type">int</span> &amp;val = f[i][j][u][v];<span class="comment">//用引用来简写</span></span><br><span class="line">                    val = (val + f[i<span class="number">-1</span>][j][u][v]) % MOD;<span class="comment">//向下走不选</span></span><br><span class="line">                    val = (val + f[i][j<span class="number">-1</span>][u][v]) % MOD;<span class="comment">//向右走不选</span></span><br><span class="line">                    <span class="keyword">if</span>(u &gt; <span class="number">0</span> &amp;&amp; w[i][j] == v)&#123;<span class="comment">//当要选择物品时，必须保证数量大于0同时价值与代表价值的下标相同</span></span><br><span class="line">                        <span class="keyword">for</span>(<span class="type">int</span> c = <span class="number">0</span>; c &lt; v; c++)&#123;<span class="comment">//查找前面所有价值比v小的情况</span></span><br><span class="line">                            <span class="comment">//c代表前一轮的最大的一个数</span></span><br><span class="line">                            val = (val + f[i<span class="number">-1</span>][j][u<span class="number">-1</span>][c]) % MOD;<span class="comment">//向下走选</span></span><br><span class="line">                            val = (val + f[i][j<span class="number">-1</span>][u<span class="number">-1</span>][c]) % MOD;<span class="comment">//向下走不选</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">13</span>;i++) res = (res+f[n][m][k][i]) % MOD;<span class="comment">//查找所有满足情况的条件加起来就是结果</span></span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="1214-波动数列"><a href="#1214-波动数列" class="headerlink" title="1214. 波动数列"></a>1214. 波动数列</h2><h3 id="题目-7"><a href="#题目-7" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1216/">题目</a></h3><p>观察这个数列：1 3 0 2 -1 1 -2 …</p>
+<p>这个数列中后一项总是比前一项增加2或者减少3，<strong>且每一项都为整数</strong>。</p>
+<p>栋栋对这种数列很好奇，他想知道长度为 <em>n</em> 和为 <em>s</em> 而且后一项总是比前一项增加 <em>a</em> 或者减少 <em>b</em> 的整数数列可能有多少种呢？</p>
+<h4 id="输入格式-7"><a href="#输入格式-7" class="headerlink" title="输入格式"></a>输入格式</h4><p>共一行，包含四个整数 <em>n</em>,<em>s</em>,<em>a</em>,<em>b</em>，含义如前面所述。</p>
+<h4 id="输出格式-7"><a href="#输出格式-7" class="headerlink" title="输出格式"></a>输出格式</h4><p>共一行，包含一个整数，表示满足条件的方案数。</p>
+<p>由于这个数很大，请输出方案数除以 100000007 的余数。</p>
+<h4 id="数据范围-7"><a href="#数据范围-7" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>n</em>≤1000,<br>−109≤<em>s</em>≤109,<br>1≤<em>a</em>,<em>b</em>≤106</p>
+<h4 id="输入样例：-4"><a href="#输入样例：-4" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4 10 2 3</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-5"><a href="#输出样例：-5" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例解释"><a href="#样例解释" class="headerlink" title="样例解释"></a>样例解释</h4><p>两个满足条件的数列分别是2 4 1 3和7 4 1 -2。</p>
+<h3 id="解题思路-6"><a href="#解题思路-6" class="headerlink" title="解题思路"></a>解题思路</h3><p> 设第一个数为<code>x</code>，则第二个数为<code>x+d1</code>，第三个数为<code>x+d1+d2</code> …。这里的d1，d2表示a或者−b，所以这个数列为：</p>
+<p><code>x, x+d1, x+d1+d2, x+d1+d2+d3, …, x+d1+d2+…+dn−1</code>，</p>
+<p>又因为数列之和为s，所以转化成：</p>
+<p><code>n∗x+(n−1)∗d1+(n−2)∗d2+(n−3)∗d3+…+dn−1=s</code>（其中有两个变量，x和$d_i$组合，由于x的取值范围太大，因此将x进行转化，用$d_i$组合表示）</p>
+<p>再进一步转化：</p>
+<p>$( s−[(n−1)∗d1+(n−2)∗d2+(n−3)∗d3+…+dn−1] )&#x2F; n&#x3D;x$</p>
+<p>因为x是任意整数，所以又转化成：</p>
+<p> s 与<code>(n−1)∗d1+(n−2)∗d2+(n−3)∗d3+…+dn−1 </code>模n的余数相同。</p>
+<p>(相当于单除小数部分要相同相减才能为整数，或者只有多余的数一样，减掉之后就刚好是倍数关系)</p>
+<p><strong>因此问题就转化成求解合法的$d_i$组合个数</strong>（只要$d_i$组合确定，x就确定了，方案也就确定了）</p>
+<p>合法就要求$d_i$组合的余数与s模n的余数相等，转化成组合问题，也就是动态规划问题</p>
+<p><img src="https://s2.loli.net/2024/03/04/FZEPbUjAGqxnMdY.png" alt="image-20220301115959121"></p>
+<p>f[i][j] 就表示前i项余数为j的方案个数（+a或者-b后得到的都是余数j，因此要上一轮两种方案合起来就是总的数量）</p>
+<p>所以用<code>f[i][j]</code>将所有前 i 项，余数为 j 的方案存下来，最后的结果就是<code>f[n-1][s%n]</code></p>
+<p>参考</p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/9223/">optimjie</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/72795/">AcWing 1214. 波动数列（有公式详细推导） - AcWing</a></p>
+<h3 id="相关代码-5"><a href="#相关代码-5" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1010</span>,MOD=<span class="number">100000007</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> f[N][N];<span class="comment">//f[i][j]表示只考虑前i项，且当前总和除以n，余数为j的方案数</span></span><br><span class="line"><span class="type">int</span> n,s,a,b;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_mod</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span><span class="comment">//因为余数可能有负的，所以这里是求a除以b的正余数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a % b + b) % b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; s &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">            f[i][j] = (f[i<span class="number">-1</span>][<span class="built_in">get_mod</span>(j-i*a,n)]+ f[i<span class="number">-1</span>][<span class="built_in">get_mod</span>(j+i*b,n)]) % MOD;<span class="comment">//最后结果是两种情况之和</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; f[n<span class="number">-1</span>][<span class="built_in">get_mod</span>(s,n)] &lt;&lt; endl;<span class="comment">//下标是从0开始，f[n-1]就代表了第 n 项</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>[同余详解入门-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/shiyongyang/article/details/78108895#:~:text=%E5%90%8C%E4%BD%99%E5%85%B3%E7%B3%BB%EF%BC%9A%E5%90%8C%E4%BD%99%EF%BC%9A%E5%A6%82%E6%9E%9Ca%E5%92%8Cb%E9%99%A4%E4%BB%A5c%E7%9A%84%E4%BD%99%E6%95%B0%E7%9B%B8%E5%90%8C%EF%BC%8C%E5%B0%B1%E8%AF%B4a%E5%92%8Cb%E5%85%B3%E4%BA%8E%E6%A8%A1c%E5%90%8C%E4%BD%99%EF%BC%8C%E8%AE%B0%E4%BD%9Ca%E2%89%A1b">https://blog.csdn.net/shiyongyang/article/details/78108895#:~:text=同余关系：同余：如果a和b除以c的余数相同，就说a和b关于模c同余，记作a≡b</a> (mod,c)。 如果两个数a和b的差能够被m整除，那么就说a和b对模数m同余（关于m同余）。 比如，28-13%3D15除以5正好除尽，我们就说28和13对于模数5同于，因为15是5的整数倍。)</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>鼓励一下作者吧！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="xinStar 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+              <a href="/tags/Acwing/" rel="tag"><i class="fa fa-tag"></i> Acwing</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" rel="tag"><i class="fa fa-tag"></i> 数学与简单DP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E8%AE%BA/" rel="prev" title="acwing 蓝桥杯辅导课数论章节习题">
+      <i class="fa fa-chevron-left"></i> acwing 蓝桥杯辅导课数论章节习题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E5%8F%8C%E6%8C%87%E9%92%88%E3%80%81BFS%E4%B8%8E%E5%9B%BE%E8%AE%BA/" rel="next" title="acwing 蓝桥杯辅导课双指针、BFS与图论章节习题">
+      acwing 蓝桥杯辅导课双指针、BFS与图论章节习题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1205-%E4%B9%B0%E4%B8%8D%E5%88%B0%E7%9A%84%E6%95%B0%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">1205. 买不到的数目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-number">1.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">1.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">1.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.3.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E4%BB%A3%E7%A0%81"><span class="nav-number">1.4.</span> <span class="nav-text">最终代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1211-%E8%9A%82%E8%9A%81%E6%84%9F%E5%86%92"><span class="nav-number">2.</span> <span class="nav-text">1211. 蚂蚁感冒</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-1"><span class="nav-number">2.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B1%EF%BC%9A"><span class="nav-number">2.1.4.</span> <span class="nav-text">输入样例1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B1%EF%BC%9A"><span class="nav-number">2.1.5.</span> <span class="nav-text">输出样例1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B2%EF%BC%9A"><span class="nav-number">2.1.6.</span> <span class="nav-text">输入样例2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B2%EF%BC%9A"><span class="nav-number">2.1.7.</span> <span class="nav-text">输出样例2：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-1"><span class="nav-number">2.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="nav-number">2.3.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81"><span class="nav-number">2.4.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1216-%E9%A5%AE%E6%96%99%E6%8D%A2%E8%B4%AD"><span class="nav-number">3.</span> <span class="nav-text">1216. 饮料换购</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-2"><span class="nav-number">3.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-1"><span class="nav-number">3.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-1"><span class="nav-number">3.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.2.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">2. 01背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-3"><span class="nav-number">4.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B"><span class="nav-number">4.1.4.</span> <span class="nav-text">输入样例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-2"><span class="nav-number">4.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="nav-number">4.2.</span> <span class="nav-text">解题思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1015-%E6%91%98%E8%8A%B1%E7%94%9F"><span class="nav-number">5.</span> <span class="nav-text">1015. 摘花生</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-4"><span class="nav-number">5.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-2"><span class="nav-number">5.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-3"><span class="nav-number">5.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-3"><span class="nav-number">5.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-2"><span class="nav-number">5.3.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#895-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97"><span class="nav-number">6.</span> <span class="nav-text">895. 最长上升子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-5"><span class="nav-number">6.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-3"><span class="nav-number">6.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-4"><span class="nav-number">6.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-4"><span class="nav-number">6.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-3"><span class="nav-number">6.3.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1212-%E5%9C%B0%E5%AE%AB%E5%8F%96%E5%AE%9D"><span class="nav-number">7.</span> <span class="nav-text">1212. 地宫取宝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-6"><span class="nav-number">7.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B1%EF%BC%9A-1"><span class="nav-number">7.1.4.</span> <span class="nav-text">输入样例1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B1%EF%BC%9A-1"><span class="nav-number">7.1.5.</span> <span class="nav-text">输出样例1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B2%EF%BC%9A-1"><span class="nav-number">7.1.6.</span> <span class="nav-text">输入样例2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B2%EF%BC%9A-1"><span class="nav-number">7.1.7.</span> <span class="nav-text">输出样例2：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-5"><span class="nav-number">7.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-4"><span class="nav-number">7.3.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1214-%E6%B3%A2%E5%8A%A8%E6%95%B0%E5%88%97"><span class="nav-number">8.</span> <span class="nav-text">1214. 波动数列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">8.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">8.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-7"><span class="nav-number">8.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-4"><span class="nav-number">8.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-5"><span class="nav-number">8.1.5.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="nav-number">8.1.6.</span> <span class="nav-text">样例解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-6"><span class="nav-number">8.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-5"><span class="nav-number">8.3.</span> <span class="nav-text">相关代码</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xinStar"
+      src="/images/header.png">
+  <p class="site-author-name" itemprop="name">xinStar</p>
+  <div class="site-description" itemprop="description">热爱漫无边际，生命自有分寸</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wcm52" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wcm52" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">鑫霜</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">140k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:07</span>
+</div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'SBQauIpxBnhv657uLZBAm6Ec-gzGzoHsz',
+      appKey     : 'FbGXaai1FyAN9WenkbSHpOPT',
+      placeholder: "添加呢称与邮箱有助于更快获得回复哦",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

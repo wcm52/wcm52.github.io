@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="google-site-verification" content="bybDl7crMHVqNN1J7f-Y_CEFbc2Hlo4IdKePDAGM52g" />
+<meta name="msvalidate.01" content="E472E4B2174B4AF4C43D027E30CC7B91" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/book32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/book16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wcm52.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":{"valine":null,"order":-1},"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1210. 连号区间数题目小明这些天一直在思考这样一个奇怪而有趣的问题： 在 1∼N 的某个排列中有多少个连号区间呢？ 这里所说的连号区间的定义是：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="acwing 蓝桥杯辅导课枚举、模拟与排序章节习题">
+<meta property="og:url" content="https://wcm52.github.io/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%9E%9A%E4%B8%BE%E3%80%81%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:site_name" content="xinStar">
+<meta property="og:description" content="1210. 连号区间数题目小明这些天一直在思考这样一个奇怪而有趣的问题： 在 1∼N 的某个排列中有多少个连号区间呢？ 这里所说的连号区间的定义是：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-04T01:49:36.130Z">
+<meta property="article:modified_time" content="2024-03-04T01:49:36.485Z">
+<meta property="article:author" content="xinStar">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Acwing">
+<meta property="article:tag" content="枚举">
+<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="排序">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wcm52.github.io/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%9E%9A%E4%B8%BE%E3%80%81%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%8E%92%E5%BA%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>acwing 蓝桥杯辅导课枚举、模拟与排序章节习题 | xinStar</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xinStar</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wcm52.github.io/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%9E%9A%E4%B8%BE%E3%80%81%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.png">
+      <meta itemprop="name" content="xinStar">
+      <meta itemprop="description" content="热爱漫无边际，生命自有分寸">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xinStar">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          acwing 蓝桥杯辅导课枚举、模拟与排序章节习题
+        </h1>
+
+        <div class="post-meta">
+		  
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-04 09:49:36" itemprop="dateCreated datePublished" datetime="2024-03-04T09:49:36+08:00">2024-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/%E4%B9%A0%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">习题</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/%E4%B9%A0%E9%A2%98/%E8%93%9D%E6%A1%A5%E6%9D%AF/" itemprop="url" rel="index"><span itemprop="name">蓝桥杯</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%9E%9A%E4%B8%BE%E3%80%81%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%8E%92%E5%BA%8F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%9E%9A%E4%B8%BE%E3%80%81%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%8E%92%E5%BA%8F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>13k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>12 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1210-连号区间数"><a href="#1210-连号区间数" class="headerlink" title="1210. 连号区间数"></a>1210. 连号区间数</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1212/">题目</a></h3><p>小明这些天一直在思考这样一个奇怪而有趣的问题：</p>
+<p>在 1∼<em>N</em> 的某个排列中有多少个连号区间呢？</p>
+<p>这里所说的连号区间的定义是：<span id="more"></span></p>
+<p>如果区间 [<em>L</em>,<em>R</em>] 里的所有元素（即此排列的第 <em>L</em> 个到第 <em>R</em> 个元素）递增排序后能得到一个长度为 <em>R</em>−<em>L</em>+1 的“连续”数列，则称这个区间连号区间。</p>
+<p>当 <em>N</em> 很小的时候，小明可以很快地算出答案，但是当 <em>N</em> 变大的时候，问题就不是那么简单了，现在小明需要你的帮助。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行是一个正整数 <em>N</em>，表示排列的规模。</p>
+<p>第二行是 <em>N</em> 个不同的数字 <em>P**i</em>，表示这 <em>N</em> 个数字的某一排列。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示不同连号区间的数目。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>N</em>≤10000,<br>1≤<em>P**i</em>≤<em>N</em></p>
+<h4 id="输入样例1："><a href="#输入样例1：" class="headerlink" title="输入样例1："></a>输入样例1：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">3 2 4 1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例1："><a href="#输出样例1：" class="headerlink" title="输出样例1："></a>输出样例1：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例2："><a href="#输入样例2：" class="headerlink" title="输入样例2："></a>输入样例2：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">3 4 2 5 1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例2："><a href="#输出样例2：" class="headerlink" title="输出样例2："></a>输出样例2：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例解释"><a href="#样例解释" class="headerlink" title="样例解释"></a>样例解释</h4><p>第一个用例中，有 7 个连号区间分别是：[1,1],[1,2],[1,3],[1,4],[2,2],[3,3],[4,4]<br> 第二个用例中，有 9 个连号区间分别是：[1,1],[1,2],[1,3],[1,4],[1,5],[2,2],[3,3],[4,4],[5,5]</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>输入一行组合数字（不重复），求有多少个连着的区间，使得其中数字可以由大到小连续排列，比如样例一的连号区间为 (3) (2) (4) (1) (3 2) (3 2 4) (3 2 4 1)</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>先直接暴力枚举左右端点L和R,</p>
+<p>判断是否是连号区间：</p>
+<ul>
+<li>由于这列数中没有重复数字，所以一个连号区中的数字满足max - min &#x3D; R - L</li>
+</ul>
+<p>满足条件则结果加一</p>
+<h3 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">10010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="comment">//左端点</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> Max = <span class="number">-1e8</span>,Min = <span class="number">1e8</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i;j&lt;n;j++)<span class="comment">//右端点</span></span><br><span class="line">        &#123;</span><br><span class="line">            Max = <span class="built_in">max</span>(Max,a[j]);</span><br><span class="line">            Min = <span class="built_in">min</span>(Min,a[j]);</span><br><span class="line">            <span class="keyword">if</span>(Max - Min == j - i) res++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1236-递增三元组"><a href="#1236-递增三元组" class="headerlink" title="1236.递增三元组"></a>1236.递增三元组</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1238/">题目</a></h3><p>给定三个整数数组<em>A</em>&#x3D;[<em>A</em>1,<em>A</em>2,…<em>A**N</em>], <em>B</em>&#x3D;[<em>B</em>1,<em>B</em>2,…<em>B**N</em>], <em>C</em>&#x3D;[<em>C</em>1,<em>C</em>2,…<em>C**N</em>],</p>
+<p>请你统计有多少个三元组 (<em>i</em>,<em>j</em>,<em>k</em>) 满足：</p>
+<p>1≤<em>i</em>,<em>j</em>,<em>k</em>≤<em>N</em></p>
+<p> <em>A**i</em>&lt;<em>B**j</em>&lt;<em>C**k</em></p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含一个整数 <em>N</em>。</p>
+<p>第二行包含 <em>N</em> 个整数 <em>A</em>1,<em>A</em>2,…<em>A**N</em>。</p>
+<p>第三行包含 <em>N</em> 个整数 <em>B</em>1,<em>B</em>2,…<em>B**N</em>。</p>
+<p>第四行包含 <em>N</em> 个整数 <em>C</em>1,<em>C</em>2,…<em>C**N</em>。</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>一个整数表示答案。</p>
+<h4 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>N</em>≤105,<br>0≤<em>A**i</em>,<em>B**i</em>,<em>C**i</em>≤105</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 1 1</span><br><span class="line">2 2 2</span><br><span class="line">3 3 3</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">27</span><br></pre></td></tr></table></figure>
+
+<h3 id="相关代码-1"><a href="#相关代码-1" class="headerlink" title="相关代码"></a>相关代码</h3><p>前缀和</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N =<span class="number">10010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[N],b[N],c[N];</span><br><span class="line"><span class="type">int</span> as[N];<span class="comment">//放A[]中有多少个数小于b[i]，as[1]就代表A中有as[i]个数小于b[i]</span></span><br><span class="line"><span class="type">int</span> cs[N];<span class="comment">//放C[]中有多少个数大于于b[i]</span></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> cnt[N],s[N];<span class="comment">//cnt[i]表示i的个数,s[i]表示从0到i有多少个数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]),a[i]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;b[i]),b[i]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;c[i]),c[i]++;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//求as[N]</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cnt[a[i]]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; N; i++) s[i] = s[i<span class="number">-1</span>] + cnt[i];<span class="comment">//s[i]代表从1到i，a[i]的个数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) as[i] = s[b[i]<span class="number">-1</span>];<span class="comment">//as[i]存从A中1到b[i]-1的个数，即A中小于b[i]的个数</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//清零cnt[N],s[N]</span></span><br><span class="line">    <span class="built_in">memset</span>(cnt, <span class="number">0</span>, <span class="keyword">sizeof</span> cnt);</span><br><span class="line">    <span class="built_in">memset</span>(s, <span class="number">0</span>, <span class="keyword">sizeof</span> s);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//求cs[N]</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cnt[c[i]]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; N; i++) s[i] = s[i<span class="number">-1</span>] + cnt[i];<span class="comment">//s[i]代表从1到i，c[i]的个数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cs[i] = s[N<span class="number">-1</span>] - s[b[i]];</span><br><span class="line">    </span><br><span class="line">    LL res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) res += (LL)as[i] * cs[i];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%ld&quot;</span>,res);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1245-特别数的和"><a href="#1245-特别数的和" class="headerlink" title="1245. 特别数的和"></a>1245. 特别数的和</h2><h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1247/">题目</a></h3><p>小明对数位中含有 2、0、1、9 的数字很感兴趣（不包括前导 0），在 1 到 40 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。</p>
+<p>请问，在 1 到 <em>n</em> 中，所有这样的数的和是多少？</p>
+<h4 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h4><p>共一行，包含一个整数 <em>n</em>。</p>
+<h4 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h4><p>共一行，包含一个整数，表示满足条件的数的和。</p>
+<h4 id="数据范围-2"><a href="#数据范围-2" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>n</em>≤10000</p>
+<h4 id="输入样例：-1"><a href="#输入样例：-1" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">40</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-1"><a href="#输出样例：-1" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">574</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h3><p>可以用<code>sscanf</code>和<code>ssprintf</code>，先将数字转化为一个字符串，判断每个字符是否满足条件，如果满足，再将当前字符串转化为一个数字，结果加上这个数字</p>
+<h4 id="相关代码-2"><a href="#相关代码-2" class="headerlink" title="相关代码"></a>相关代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> str[<span class="number">6</span>];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> x=<span class="number">0</span>,res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; i++)<span class="comment">//枚举从1到n的每个数</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">sprintf</span>(str,<span class="string">&quot;%d&quot;</span>,i);<span class="comment">//把数字i变成字符数组str</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; str[j] != <span class="string">&#x27;\0&#x27;</span>; j++)<span class="comment">//判断每个数字是否满足条件</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(str[j] == <span class="string">&#x27;2&#x27;</span> || str[j] == <span class="string">&#x27;0&#x27;</span> || str[j] == <span class="string">&#x27;1&#x27;</span> || str[j] == <span class="string">&#x27;9&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">sscanf</span>(str,<span class="string">&quot;%d&quot;</span>,&amp;x);<span class="comment">//把字符数组str变成数字x</span></span><br><span class="line">                res += x;</span><br><span class="line">                <span class="keyword">break</span>;<span class="comment">//在这个字符串中只要有一个字符满足条件即可</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x = i;</span><br><span class="line">        <span class="keyword">while</span>(x)</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="type">int</span> a = x % <span class="number">10</span>;<span class="comment">//判断末位是否符合条件</span></span><br><span class="line">            x = x/<span class="number">10</span>;<span class="comment">//将末位去除</span></span><br><span class="line">            <span class="keyword">if</span>(a == <span class="number">1</span> || a == <span class="number">2</span> || a == <span class="number">0</span> || a == <span class="number">9</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                res += i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1204-错误票据"><a href="#1204-错误票据" class="headerlink" title="1204. 错误票据"></a>1204. 错误票据</h2><h3 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1206/">题目</a></h3><p>某涉密单位下发了某种票据，并要在年终全部收回。每张票据有唯一的ID号。全年所有票据的ID号是连续的，但ID的开始数码是随机选定的。因为工作人员疏忽，在录入ID号的时候发生了一处错误，造成了某个ID断号，另外一个ID重号。你的任务是通过编程，找出断号的ID和重号的ID。假设断号不可能发生在最大和最小号。</p>
+<h4 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>N</em>，表示后面共有 <em>N</em> 行数据。接下来 <em>N</em> 行，每行包含空格分开的若干个（不大于100个）正整数（不大于100000），每个整数代表一个ID号。</p>
+<h4 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h4><p>要求程序输出1行，含两个整数 <em>m</em>,<em>n</em>，用空格分隔。其中，<em>m</em>表示断号ID，<em>n</em>表示重号ID。</p>
+<h4 id="数据范围-3"><a href="#数据范围-3" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>N</em>≤100</p>
+<h4 id="输入样例：-2"><a href="#输入样例：-2" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">5 6 8 11 9 </span><br><span class="line">10 12 9</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-2"><a href="#输出样例：-2" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7 9</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法1-1"><a href="#算法1-1" class="headerlink" title="算法1"></a>算法1</h3><p>找出这组数的最大值和最小值，记录下每个数出现的次数，找出出现次数为0和2的数输出</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100000</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> cnt[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">int</span> Max = <span class="number">0</span>,Min = <span class="number">100000</span>;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(cin &gt;&gt; x)</span><br><span class="line">    &#123;</span><br><span class="line">        cnt[x] ++;</span><br><span class="line">        Max = <span class="built_in">max</span>(Max,x);</span><br><span class="line">        Min = <span class="built_in">min</span>(Min,x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> xdh=<span class="number">0</span>,xch=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = Min; i &lt;= Max; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(cnt[i] == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            xdh = i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(cnt[i] == <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            xch = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        cout &lt;&lt; xdh &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; xch &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="算法2-1"><a href="#算法2-1" class="headerlink" title="算法2"></a>算法2</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> cnt;</span><br><span class="line">    cin &gt;&gt; cnt;</span><br><span class="line">    string line;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">getline</span>(cin,line);<span class="comment">//读入第一行的空格</span></span><br><span class="line">    <span class="keyword">while</span>(cnt--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">getline</span>(cin,line);<span class="comment">//getline是包含回车读入</span></span><br><span class="line">        <span class="function">stringstream <span class="title">ssin</span><span class="params">(line)</span></span>;<span class="comment">//相当于从line中读入</span></span><br><span class="line">    </span><br><span class="line">        <span class="keyword">while</span>(ssin &gt;&gt; a[n]) n++;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a, a + n);<span class="comment">//对a中的所有排序</span></span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> res1,res2;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span>  i= <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i] == a[i+<span class="number">1</span>]) res1 = a[i];</span><br><span class="line">        <span class="keyword">if</span>(a[i+<span class="number">1</span>] - a[i] &gt;= <span class="number">2</span>) res2 = a[i]+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; res2 &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; res1 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="466-回文日期"><a href="#466-回文日期" class="headerlink" title="466. 回文日期"></a>466. 回文日期</h2><h3 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/468/">题目</a></h3><p>在日常生活中，通过年、月、日这三个要素可以表示出一个唯一确定的日期。牛牛习惯用 8 位数字表示一个日期，其中，前 4 位代表年份，接下来 2 位代表月份，最后 2 位代表日期。</p>
+<p>显然：一个日期只有一种表示方法，而两个不同的日期的表示方法不会相同。牛牛认为，一个日期是回文的，当且仅当表示这个日期的 8 位数字是回文的。</p>
+<p>现在，牛牛想知道：在他指定的两个日期之间（包含这两个日期本身），有多少个真实存在的日期是回文的。</p>
+<p>一个 8 位数字是回文的，当且仅当对于所有的 <em>i</em>(1≤<em>i</em>≤8) 从左向右数的第 <em>i</em> 个数字和第 9−<em>i</em> 个数字（即从右向左数的第 <em>i</em> 个数字）是相同的。</p>
+<p>例如：</p>
+<p>对于 2016 年 11 月 19 日，用 8 位数字 20161119 表示，它不是回文的。</p>
+<p>对于 2010 年 1 月 2 日，用 8 位数字 20100102 表示，它是回文的。对于 2010 年 10 月 2 日，用 8 位数字 20101002 表示，它不是回文的。</p>
+<h4 id="输入格式-4"><a href="#输入格式-4" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入包括两行，每行包括一个 8 位数字。    第一行表示牛牛指定的起始日期 <em>d<strong>a</strong>t**e</em>1，第二行表示牛牛指定的终止日期 <em>d<strong>a</strong>t**e</em>2。保证 <em>d<strong>a</strong>t**e</em>1 和 <em>d<strong>a</strong>t**e</em>2 都是真实存在的日期，且年份部分一定为 4 位数字，且首位数字不为 0。保证 <em>d<strong>a</strong>t**e</em>1 一定不晚于 <em>d<strong>a</strong>t**e</em>2。</p>
+<h4 id="输出格式-4"><a href="#输出格式-4" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出共一行，包含一个整数，表示在 <em>d<strong>a</strong>t**e</em>1 和 <em>d<strong>a</strong>t**e</em>2</p>
+<p> 之间，有多少个日期是回文的。</p>
+<h4 id="输入样例：-3"><a href="#输入样例：-3" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">20110101</span><br><span class="line">20111231</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-3"><a href="#输出样例：-3" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>列举从1000到9999之间的数，求出相应的回文数组成的日期date，判断该日期是否合法（date要处于date1到date2之间）</p>
+<h3 id="相关代码-3"><a href="#相关代码-3" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> date)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a[<span class="number">13</span>] = &#123;<span class="number">0</span>,<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> t = date % <span class="number">10000</span>;</span><br><span class="line">    <span class="type">int</span> day = t % <span class="number">100</span>, month = t / <span class="number">100</span>;</span><br><span class="line">    <span class="type">int</span> year = date / <span class="number">10000</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(year % <span class="number">400</span> == <span class="number">0</span> || year % <span class="number">100</span> != <span class="number">0</span> &amp;&amp; year % <span class="number">4</span> == <span class="number">0</span> ) a[<span class="number">2</span>]++;<span class="comment">//判断是不是闰年，是闰年则二月天数加一</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>( day == <span class="number">0</span> || day &gt; a[month] || month == <span class="number">0</span> || month &gt; <span class="number">12</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> date1,date2;</span><br><span class="line">    cin &gt;&gt; date1 &gt;&gt; date2;</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1000</span>; i &lt; <span class="number">10000</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x = i;</span><br><span class="line">        <span class="type">int</span> date=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(x &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            date = date * <span class="number">10</span> + x % <span class="number">10</span>; </span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        date += i *<span class="number">10000</span> ;<span class="comment">//用date来每个存回文日期，如果该日期合法，计数器加一</span></span><br><span class="line">        <span class="keyword">if</span>(date1 &lt;= date &amp;&amp; date &lt;= date2 &amp;&amp; <span class="built_in">check</span>(date)) cnt++;<span class="comment">//date必须在date1到date2之间</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; cnt &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="1219-移动距离"><a href="#1219-移动距离" class="headerlink" title="1219. 移动距离"></a>1219. 移动距离</h2><h3 id="题目-5"><a href="#题目-5" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1221/">题目</a></h3><p>X星球居民小区的楼房全是一样的，并且按矩阵样式排列。其楼房的编号为 1,2,3…</p>
+<p>当排满一行时，从下一行相邻的楼往反方向排号。</p>
+<p>比如：当小区排号宽度为 6 时，开始情形如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1  2  3  4  5  6</span><br><span class="line">12 11 10 9  8  7</span><br><span class="line">13 14 15 .....</span><br></pre></td></tr></table></figure>
+
+<p>我们的问题是：已知了两个楼号 <em>m</em> 和 <em>n</em>，需要求出它们之间的最短移动距离（不能斜线方向移动）。</p>
+<h4 id="输入格式-5"><a href="#输入格式-5" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入共一行，包含三个整数 <em>w</em>,<em>m</em>,<em>n</em>，<em>w</em> 为排号宽度，<em>m</em>,<em>n</em> 为待计算的楼号。</p>
+<h4 id="输出格式-5"><a href="#输出格式-5" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示 <em>m</em>,<em>n</em> 两楼间最短移动距离。</p>
+<h4 id="数据范围-4"><a href="#数据范围-4" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>w</em>,<em>m</em>,<em>n</em>≤10000,</p>
+<h4 id="输入样例：-4"><a href="#输入样例：-4" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6 8 2</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-4"><a href="#输出样例：-4" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h3><p>直接求 m 和 n 的曼哈顿距离，</p>
+<p>如何求 m 和 n 的坐标：</p>
+<ul>
+<li><p>为了方便求横纵坐标，先把 m 和 n 都减一</p>
+</li>
+<li><p>横坐标直接 m 和 n 除以w</p>
+</li>
+<li><p>纵坐标要判断奇偶行 ，奇数行纵坐标直接取余，偶数行要用 w 减去取余后的数再减一（因为最开始 m 和 n 减一）</p>
+</li>
+</ul>
+<h3 id="相关代码-4"><a href="#相关代码-4" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> w,m,n;</span><br><span class="line">    cin &gt;&gt; w &gt;&gt; m &gt;&gt; n;</span><br><span class="line">    m--,n--;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//求m和n的横坐标</span></span><br><span class="line">    <span class="type">int</span> x1,y1,x2,y2;</span><br><span class="line">    x1 = m / w, x2 = n / w;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//求m的纵坐标</span></span><br><span class="line">    <span class="keyword">if</span>(x1 % <span class="number">2</span>) y1 = m % w;</span><br><span class="line">    <span class="keyword">else</span> y1 = w - <span class="number">1</span> - m % w;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//求n的纵坐标</span></span><br><span class="line">    <span class="keyword">if</span>(x2 % <span class="number">2</span>) y2 = n % w;</span><br><span class="line">    <span class="keyword">else</span> y2 = w - <span class="number">1</span> - n % w;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="built_in">abs</span>(x1 - x2) + <span class="built_in">abs</span>(y1 - y2) &lt;&lt; endl; <span class="comment">//求曼哈顿距离</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1229-日期问题"><a href="#1229-日期问题" class="headerlink" title="1229. 日期问题"></a>1229. 日期问题</h2><h3 id="题目-6"><a href="#题目-6" class="headerlink" title=" 题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1231/"> 题目</a></h3><p>小明正在整理一批历史文献。这些历史文献中出现了很多日期。</p>
+<p>小明知道这些日期都在1960年1月1日至2059年12月31日。</p>
+<p>令小明头疼的是，这些日期采用的格式非常不统一，有采用年&#x2F;月&#x2F;日的，有采用月&#x2F;日&#x2F;年的，还有采用日&#x2F;月&#x2F;年的。</p>
+<p>更加麻烦的是，年份也都省略了前两位，使得文献上的一个日期，存在很多可能的日期与其对应。  </p>
+<p>比如02&#x2F;03&#x2F;04，可能是2002年03月04日、2004年02月03日或2004年03月02日。  </p>
+<p>给出一个文献上的日期，你能帮助小明判断有哪些可能的日期对其对应吗？</p>
+<h4 id="输入格式-6"><a href="#输入格式-6" class="headerlink" title="输入格式"></a>输入格式</h4><p>一个日期，格式是”AA&#x2F;BB&#x2F;CC”。</p>
+<p>即每个’&#x2F;’隔开的部分由两个 0-9 之间的数字（不一定相同）组成。</p>
+<h4 id="输出格式-6"><a href="#输出格式-6" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出若干个不相同的日期，每个日期一行，格式是”yyyy-MM-dd”。</p>
+<p>多个日期按从早到晚排列。  </p>
+<h4 id="数据范围-5"><a href="#数据范围-5" class="headerlink" title="数据范围"></a>数据范围</h4><p>0≤<em>A</em>,<em>B</em>,<em>C</em>≤9</p>
+<h4 id="输入样例：-5"><a href="#输入样例：-5" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">02/03/04</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-5"><a href="#输出样例：-5" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2002-03-04</span><br><span class="line">2004-02-03</span><br><span class="line">2004-03-02</span><br></pre></td></tr></table></figure>
+
+<h2 id="算法1-2"><a href="#算法1-2" class="headerlink" title="算法1"></a>算法1</h2><p>列举所有1960年1月1日至2059年12月31日的日期，找符合条件的日期</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> days[<span class="number">13</span>]=&#123;<span class="number">0</span>,<span class="number">31</span>,<span class="number">29</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断日期是否合法</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> year,<span class="type">int</span> month,<span class="type">int</span> day)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(month == <span class="number">0</span> || month &gt; <span class="number">12</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(days[month] &lt; day||day==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//day==0,条件易忽略</span></span><br><span class="line">    <span class="keyword">if</span>(month == <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!(year % <span class="number">100</span> &amp;&amp; year % <span class="number">4</span> == <span class="number">0</span> || year % <span class="number">400</span> == <span class="number">0</span>)) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(day &gt; <span class="number">28</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125; </span><br><span class="line">     <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a,b,c;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d/%d/%d&quot;</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> date = <span class="number">19600101</span>; date &lt;= <span class="number">20591231</span>; date++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> year = date / <span class="number">10000</span>,month=date % <span class="number">10000</span> / <span class="number">100</span>,day = date % <span class="number">10000</span> % <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">check</span>(year,month,day))</span><br><span class="line">        &#123;<span class="comment">//year%100易忽略</span></span><br><span class="line">            <span class="comment">//判断日期是否满足输入条件</span></span><br><span class="line">            <span class="keyword">if</span>(a == year % <span class="number">100</span> &amp;&amp; b == month &amp;&amp; c == day || a == month &amp;&amp; b == day &amp;&amp; c == year % <span class="number">100</span> || a == day &amp;&amp; b == month &amp;&amp; c == year % <span class="number">100</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d-%02d-%02d\n&quot;</span>,year,month,day);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="算法2-2"><a href="#算法2-2" class="headerlink" title="算法2"></a>算法2</h2><p>列举输入数字的所有可能，找出在1960年1月1日至2059年12月31日之内的日期，还要判断日期，天数大小（情况比较多）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断日期是否合法</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> year,<span class="type">int</span> month,<span class="type">int</span> Day)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> day[<span class="number">13</span>] = &#123;<span class="number">0</span>,<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line">    <span class="keyword">if</span>(year % <span class="number">400</span> == <span class="number">0</span> || year % <span class="number">100</span> &amp;&amp; year % <span class="number">4</span> == <span class="number">0</span>) day[<span class="number">2</span>]++;</span><br><span class="line">    <span class="keyword">if</span>(Day &gt; day[month]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">prinf</span><span class="params">(<span class="type">int</span> year,<span class="type">int</span> month,<span class="type">int</span> day)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(year &gt;= <span class="number">1960</span> &amp;&amp; year &lt;= <span class="number">2059</span> &amp;&amp; <span class="built_in">check</span>(year,month,day) &amp;&amp; day &amp;&amp; month &lt;=<span class="number">12</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d-&quot;</span>,year);</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span>(month &gt;= <span class="number">10</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d-&quot;</span>,month);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;0%d-&quot;</span>,month);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(day &gt;= <span class="number">10</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,day);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;0%d\n&quot;</span>,day);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//判断哪一个月份比较小，先输出比较小的,再输出比较大的</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">max_day</span><span class="params">(<span class="type">int</span> year1,<span class="type">int</span> year2,<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a &lt; b)&#123;</span><br><span class="line">        <span class="built_in">prinf</span>(year2,a,b);</span><br><span class="line">        <span class="built_in">prinf</span>(year2,b,a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a == b) <span class="built_in">prinf</span>(year2,a,b);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">prinf</span>(year2,b,a);</span><br><span class="line">        <span class="built_in">prinf</span>(year2,a,b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a,b,c;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d/%d/%d&quot;</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">19</span>; i &lt;= <span class="number">20</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> year1 = i * <span class="number">100</span> + a;</span><br><span class="line">        <span class="type">int</span> year2 = i * <span class="number">100</span> + c;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(year1 == year2 &amp;&amp; a == b &amp;&amp; b == c) <span class="built_in">prinf</span>(year1,b,c);<span class="comment">//当三个数都相同时</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(year1 &lt; year2)&#123;</span><br><span class="line">            <span class="built_in">prinf</span>(year1,b,c);</span><br><span class="line">            <span class="built_in">max_day</span>(year1,year2,a,b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(year1 == year2)&#123;</span><br><span class="line">            <span class="built_in">prinf</span>(year1,b,c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">max_day</span>(year1,year2,a,b);</span><br><span class="line">            <span class="built_in">prinf</span>(year1,b,c);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1231-航班时间"><a href="#1231-航班时间" class="headerlink" title="1231. 航班时间"></a>1231. 航班时间</h2><h3 id="题目-7"><a href="#题目-7" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1233/">题目</a></h3><p>小 <em>h</em> 前往美国参加了蓝桥杯国际赛。小 <em>h</em> 的女朋友发现小 <em>h</em> 上午十点出发，上午十二点到达美国，于是感叹到“现在飞机飞得真快，两小时就能到美国了”。<em>h</em> 对超音速飞行感到十分恐惧。仔细观察后发现飞机的起降时间都是当地时间。由于北京和美国东部有 12 小时时差，故飞机总共需要 14 小时的飞行时间。</p>
+<p>不久后小 <em>h</em> 的女朋友去中东交换。小 <em>h</em> 并不知道中东与北京的时差。但是小 <em>h</em> 得到了女朋友来回航班的起降时间。</p>
+<p>小 <em>h</em> 想知道女朋友的航班飞行时间是多少。</p>
+<p>对于一个可能跨时区的航班，给定来回程的起降时间。</p>
+<p>假设飞机来回飞行时间相同，求飞机的飞行时间。</p>
+<h4 id="输入格式-7"><a href="#输入格式-7" class="headerlink" title="输入格式"></a>输入格式</h4><p>一个输入包含多组数据。输入第一行为一个正整数 <em>T</em>，表示输入数据组数。</p>
+<p>每组数据包含两行，第一行为去程的起降时间，第二行为回程的起降时间。</p>
+<p>起降时间的格式如下:</p>
+<ol>
+<li>h1:m1:s1 h2:m2:s2</li>
+<li>h1:m1:s1 h3:m3:s3 (+1)</li>
+<li>h1:m1:s1 h4:m4:s4 (+2)</li>
+</ol>
+<p>第一种格式表示该航班在<strong>当地</strong>时间h1时m1分s1秒起飞，在<strong>当地</strong>时间<strong>当日</strong>h2时m2分s2秒降落。</p>
+<p>第二种格式表示该航班在<strong>当地</strong>时间h1时m1分s1秒起飞，在<strong>当地</strong>时间<strong>次日</strong>h2时m2分s2秒降落。</p>
+<p>第三种格式表示该航班在<strong>当地</strong>时间h1时m1分s1秒起飞，在<strong>当地</strong>时间<strong>第三日</strong>h2时m2分s2秒降落。</p>
+<h4 id="输出格式-7"><a href="#输出格式-7" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每一组数据输出一行一个时间hh:mm:ss，表示飞行时间为hh小时mm分ss秒。</p>
+<p>注意，当时间为一位数时，要补齐前导零，如三小时四分五秒应写为03:04:05。</p>
+<h4 id="数据范围-6"><a href="#数据范围-6" class="headerlink" title="数据范围"></a>数据范围</h4><p>保证输入时间合法（0≤<em>h</em>≤23,0≤<em>m</em>,<em>s</em>≤59</p>
+<p>），飞行时间不超过24小时。</p>
+<h4 id="输入样例：-6"><a href="#输入样例：-6" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">17:48:19 21:57:24</span><br><span class="line">11:05:18 15:14:23</span><br><span class="line">17:21:07 00:31:46 (+1)</span><br><span class="line">23:02:41 16:13:20 (+1)</span><br><span class="line">10:19:19 20:41:24</span><br><span class="line">22:19:04 16:41:09 (+1)</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-6"><a href="#输出样例：-6" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">04:09:05</span><br><span class="line">12:10:39</span><br><span class="line">14:22:05</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h3><p>去时的时间是 <code>t1-t2-dh</code>,回来的时间是<code>T2-T1+dh</code>两两相加时差就抵消了，所以最后答案直接两个答案相加除以2</p>
+<h3 id="相关代码-5"><a href="#相关代码-5" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">getTime</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> h1,m1,s1,h2,m2,s2,d=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d:%d:%d %d:%d:%d (+%d)&quot;</span>,&amp;h1,&amp;m1,&amp;s1,&amp;h2,&amp;m2,&amp;s2,&amp;d);</span><br><span class="line">    <span class="type">int</span> time=d*<span class="number">24</span>*<span class="number">3600</span>+h2*<span class="number">3600</span>+m2*<span class="number">60</span>+s2-(h1*<span class="number">3600</span>+m1*<span class="number">60</span>+s1);</span><br><span class="line">    <span class="keyword">return</span> time;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; t; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> time1=<span class="built_in">getTime</span>();</span><br><span class="line">        <span class="type">int</span> time2=<span class="built_in">getTime</span>();</span><br><span class="line">        <span class="type">int</span> t=(time1+time2)/<span class="number">2</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%02d:%02d:%02d\n&quot;</span>, t/<span class="number">3600</span>, t/<span class="number">60</span>%<span class="number">60</span>, t%<span class="number">60</span>);</span><br><span class="line">    &#125;<span class="comment">//%02表示不足两位就补0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1241-外卖店优先级"><a href="#1241-外卖店优先级" class="headerlink" title="1241. 外卖店优先级"></a>1241. 外卖店优先级</h2><h3 id="题目-8"><a href="#题目-8" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1243/">题目</a></h3><p>“饱了么”外卖系统中维护着 <em>N</em> 家外卖店，编号 1∼<em>N</em>。每家外卖店都有一个优先级，初始时 (0 时刻) 优先级都为 0。</p>
+<p>每经过 1 个时间单位，如果外卖店没有订单，则优先级会减少 1，最低减到 0；而如果外卖店有订单，则优先级不减反加，每有一单优先级加 2。</p>
+<p>如果某家外卖店某时刻优先级大于 5，则会被系统加入优先缓存中；如果优先级小于等于 3，则会被清除出优先缓存。</p>
+<p>给定 <em>T</em> 时刻以内的 <em>M</em> 条订单信息，请你计算 <em>T</em> 时刻时有多少外卖店在优先缓存中。</p>
+<h4 id="输入格式-8"><a href="#输入格式-8" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含 3 个整数 <em>N</em>,<em>M</em>,<em>T</em>。</p>
+<p>以下 <em>M</em> 行每行包含两个整数 <em>t**s</em> 和 <em>i**d</em>，表示 <em>t**s</em> 时刻编号 <em>i**d</em></p>
+<p> 的外卖店收到一个订单。</p>
+<h4 id="输出格式-8"><a href="#输出格式-8" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数代表答案。</p>
+<h4 id="数据范围-7"><a href="#数据范围-7" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>N</em>,<em>M</em>,<em>T</em>≤105,<br>1≤<em>t**s</em>≤<em>T</em>,<br>1≤<em>i**d</em>≤<em>N</em></p>
+<h4 id="输入样例：-7"><a href="#输入样例：-7" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2 6 6</span><br><span class="line">1 1</span><br><span class="line">5 2</span><br><span class="line">3 1</span><br><span class="line">6 2</span><br><span class="line">2 1</span><br><span class="line">6 2</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-7"><a href="#输出样例：-7" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例解释-1"><a href="#样例解释-1" class="headerlink" title="样例解释"></a>样例解释</h4><p>6 时刻时，1 号店优先级降到 3，被移除出优先缓存；2 号店优先级升到 6，加入优先缓存。所以是有 1 家店 (2 号) 在优先缓存中。</p>
+<h3 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h3><p>先用pair存输入的数据并排序</p>
+<ul>
+<li>统计相同的订单之间的个数</li>
+<li>最后一次接到订单与下一次接到订单的时间差</li>
+<li>每次分别计算优先级 以及 是否进入优先缓存</li>
+<li>最后单独计算最后一次接到订单的时间与总时间的差值，用之前的优先级减去差值得到最后的优先级</li>
+</ul>
+<h3 id="相关代码-6"><a href="#相关代码-6" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,m,T;</span><br><span class="line"><span class="type">int</span> a[N];<span class="comment">//存每一个店家的优先级</span></span><br><span class="line"><span class="type">int</span> last[N];<span class="comment">//存每一个店家上一次拿到订单的时间</span></span><br><span class="line"><span class="type">bool</span> st[N];<span class="comment">//存每一个店家是否加入优先缓存；</span></span><br><span class="line"></span><br><span class="line">PII order[N];<span class="comment">//存每一次输入</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; T;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;order[i].first,&amp;order[i].second);</span><br><span class="line">    <span class="built_in">sort</span>(order,order+m);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; m;)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> j = i;</span><br><span class="line">        <span class="keyword">while</span>(j &lt; m &amp;&amp; order[j] == order[i]) j++;<span class="comment">//判断有多少相同的订单，直接将j移到最后一个相同的订单后面</span></span><br><span class="line">        <span class="type">int</span> t = order[i].first, id = order[i].second, cnt = j - i;<span class="comment">//cnt表示有多少个相同的订单</span></span><br><span class="line">        i = j;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//处理这一次拿到订单和上一次拿到订单的信息</span></span><br><span class="line">        a[id] -= t - last[id] - <span class="number">1</span>;<span class="comment">//a[id]的优先级减去t到last[id]之间没有拿到订单的时刻，所以要减一，因为不包含t时刻的订单</span></span><br><span class="line">        <span class="keyword">if</span>(a[id] &lt; <span class="number">0</span>) a[id] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[id] &lt;=<span class="number">3</span>) st[id] = <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//处理这一批拿到的订单</span></span><br><span class="line">        a[id] += cnt * <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[id] &gt; <span class="number">5</span>) st[id] = <span class="literal">true</span>;<span class="comment">//以上是处理一批拿到订单的信息</span></span><br><span class="line">        </span><br><span class="line">        last[id] = t;<span class="comment">//记录下拿到订单的时间</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//最后一个last[id]后面可能一直没有拿到订单，要单独减去没有拿到订单的时刻</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(last[i] &lt; T)</span><br><span class="line">        &#123;</span><br><span class="line">            a[i] -= T - last[i];</span><br><span class="line">            <span class="keyword">if</span>(a[i] &lt;= <span class="number">3</span>) st[i] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) res += st[i];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>鼓励一下作者吧！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="xinStar 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+              <a href="/tags/Acwing/" rel="tag"><i class="fa fa-tag"></i> Acwing</a>
+              <a href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag"><i class="fa fa-tag"></i> 枚举</a>
+              <a href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag"><i class="fa fa-tag"></i> 模拟</a>
+              <a href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag"><i class="fa fa-tag"></i> 排序</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" rel="prev" title="acwing 蓝桥杯辅导课二分与前缀和章节习题">
+      <i class="fa fa-chevron-left"></i> acwing 蓝桥杯辅导课二分与前缀和章节习题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E8%AE%BA/" rel="next" title="acwing 蓝桥杯辅导课数论章节习题">
+      acwing 蓝桥杯辅导课数论章节习题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1210-%E8%BF%9E%E5%8F%B7%E5%8C%BA%E9%97%B4%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">1210. 连号区间数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-number">1.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B1%EF%BC%9A"><span class="nav-number">1.1.4.</span> <span class="nav-text">输入样例1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B1%EF%BC%9A"><span class="nav-number">1.1.5.</span> <span class="nav-text">输出样例1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B2%EF%BC%9A"><span class="nav-number">1.1.6.</span> <span class="nav-text">输入样例2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B2%EF%BC%9A"><span class="nav-number">1.1.7.</span> <span class="nav-text">输出样例2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="nav-number">1.1.8.</span> <span class="nav-text">样例解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.3.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81"><span class="nav-number">1.4.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1236-%E9%80%92%E5%A2%9E%E4%B8%89%E5%85%83%E7%BB%84"><span class="nav-number">2.</span> <span class="nav-text">1236.递增三元组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-1"><span class="nav-number">2.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">2.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">2.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-1"><span class="nav-number">2.2.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1245-%E7%89%B9%E5%88%AB%E6%95%B0%E7%9A%84%E5%92%8C"><span class="nav-number">3.</span> <span class="nav-text">1245. 特别数的和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-2"><span class="nav-number">3.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-1"><span class="nav-number">3.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-1"><span class="nav-number">3.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%951"><span class="nav-number">3.2.</span> <span class="nav-text">算法1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-2"><span class="nav-number">3.2.1.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%952"><span class="nav-number">3.3.</span> <span class="nav-text">算法2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1204-%E9%94%99%E8%AF%AF%E7%A5%A8%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text">1204. 错误票据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-3"><span class="nav-number">4.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-2"><span class="nav-number">4.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-2"><span class="nav-number">4.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%951-1"><span class="nav-number">4.2.</span> <span class="nav-text">算法1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%952-1"><span class="nav-number">4.3.</span> <span class="nav-text">算法2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#466-%E5%9B%9E%E6%96%87%E6%97%A5%E6%9C%9F"><span class="nav-number">5.</span> <span class="nav-text">466. 回文日期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-3"><span class="nav-number">5.1.3.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-3"><span class="nav-number">5.1.4.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="nav-number">5.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-3"><span class="nav-number">5.3.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1219-%E7%A7%BB%E5%8A%A8%E8%B7%9D%E7%A6%BB"><span class="nav-number">6.</span> <span class="nav-text">1219. 移动距离</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-4"><span class="nav-number">6.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-4"><span class="nav-number">6.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-4"><span class="nav-number">6.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="nav-number">6.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-4"><span class="nav-number">6.3.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1229-%E6%97%A5%E6%9C%9F%E9%97%AE%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">1229. 日期问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-6"><span class="nav-number">7.1.</span> <span class="nav-text"> 题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-5"><span class="nav-number">7.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-5"><span class="nav-number">7.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-5"><span class="nav-number">7.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%951-2"><span class="nav-number">8.</span> <span class="nav-text">算法1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%952-2"><span class="nav-number">9.</span> <span class="nav-text">算法2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1231-%E8%88%AA%E7%8F%AD%E6%97%B6%E9%97%B4"><span class="nav-number">10.</span> <span class="nav-text">1231. 航班时间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-7"><span class="nav-number">10.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">10.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">10.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-6"><span class="nav-number">10.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-6"><span class="nav-number">10.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-6"><span class="nav-number">10.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-3"><span class="nav-number">10.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-5"><span class="nav-number">10.3.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1241-%E5%A4%96%E5%8D%96%E5%BA%97%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">11.</span> <span class="nav-text">1241. 外卖店优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-8"><span class="nav-number">11.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-8"><span class="nav-number">11.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-8"><span class="nav-number">11.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-7"><span class="nav-number">11.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-7"><span class="nav-number">11.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-7"><span class="nav-number">11.1.5.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%A7%A3%E9%87%8A-1"><span class="nav-number">11.1.6.</span> <span class="nav-text">样例解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-4"><span class="nav-number">11.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-6"><span class="nav-number">11.3.</span> <span class="nav-text">相关代码</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xinStar"
+      src="/images/header.png">
+  <p class="site-author-name" itemprop="name">xinStar</p>
+  <div class="site-description" itemprop="description">热爱漫无边际，生命自有分寸</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wcm52" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wcm52" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">鑫霜</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">140k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:07</span>
+</div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'SBQauIpxBnhv657uLZBAm6Ec-gzGzoHsz',
+      appKey     : 'FbGXaai1FyAN9WenkbSHpOPT',
+      placeholder: "添加呢称与邮箱有助于更快获得回复哦",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

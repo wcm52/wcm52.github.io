@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="google-site-verification" content="bybDl7crMHVqNN1J7f-Y_CEFbc2Hlo4IdKePDAGM52g" />
+<meta name="msvalidate.01" content="E472E4B2174B4AF4C43D027E30CC7B91" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/book32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/book16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wcm52.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":{"valine":null,"order":-1},"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前面更大的个数题目描述人比人，气死人；鱼比鱼，难死鱼。小鱼最近参加了一个“比可爱”比赛，比的是每只鱼的可爱程度。参赛的鱼被从左到右排成一排，头都朝向左边，然后每只鱼会得到一个整数数值，表示这只鱼的可爱程度，很显然整数越大，表示这只鱼越可爱，而且任意两只鱼的可爱程度可能一样。由于所有的鱼头都朝向左">
+<meta property="og:type" content="article">
+<meta property="og:title" content="acwing C++语法基础课数组章节习题">
+<meta property="og:url" content="https://wcm52.github.io/2024/03/04/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="xinStar">
+<meta property="og:description" content="前面更大的个数题目描述人比人，气死人；鱼比鱼，难死鱼。小鱼最近参加了一个“比可爱”比赛，比的是每只鱼的可爱程度。参赛的鱼被从左到右排成一排，头都朝向左边，然后每只鱼会得到一个整数数值，表示这只鱼的可爱程度，很显然整数越大，表示这只鱼越可爱，而且任意两只鱼的可爱程度可能一样。由于所有的鱼头都朝向左">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2019/05/03/19_799a14f86d-UOJ_1183.png">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2019/05/03/19_0803f9d66d-UOJ_1185.png">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2019/05/03/19_fb1e71426d-UOJ_1187.png">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2019/05/03/19_4750e19a6d-UOJ_1189.png">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2019/05/03/19_fde98b8e6d-UOJ_1186.png">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2019/05/03/19_5f9eed246d-UOJ_1184.png">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2019/05/03/19_eaad51506d-UOJ_1188.png">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2019/05/03/19_c833ee0a6d-UOJ_1190.png">
+<meta property="article:published_time" content="2024-03-04T01:30:36.603Z">
+<meta property="article:modified_time" content="2024-03-04T01:33:28.026Z">
+<meta property="article:author" content="xinStar">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Acwing">
+<meta property="article:tag" content="语法基础">
+<meta property="article:tag" content="数组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.acwing.com/media/article/image/2019/05/03/19_799a14f86d-UOJ_1183.png">
+
+<link rel="canonical" href="https://wcm52.github.io/2024/03/04/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/%E6%95%B0%E7%BB%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>acwing C++语法基础课数组章节习题 | xinStar</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xinStar</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wcm52.github.io/2024/03/04/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.png">
+      <meta itemprop="name" content="xinStar">
+      <meta itemprop="description" content="热爱漫无边际，生命自有分寸">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xinStar">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          acwing C++语法基础课数组章节习题
+        </h1>
+
+        <div class="post-meta">
+		  
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-03-04 09:30:36 / 修改时间：09:33:28" itemprop="dateCreated datePublished" datetime="2024-03-04T09:30:36+08:00">2024-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/%E4%B9%A0%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">习题</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/%E4%B9%A0%E9%A2%98/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">语法基础</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/03/04/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/%E6%95%B0%E7%BB%84/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/04/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/%E6%95%B0%E7%BB%84/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>20k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>18 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前面更大的个数"><a href="#前面更大的个数" class="headerlink" title="前面更大的个数"></a>前面更大的个数</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>人比人，气死人；鱼比鱼，难死鱼。小鱼最近参加了一个“比可爱”比赛，比的是每只鱼的可爱程度。参赛的鱼被从左到右排成一排，头都朝向左边，然后每只鱼会得到一个整数数值，表示这只鱼的可爱程度，很显然整数越大，表示这只鱼越可爱，而且任意两只鱼的可爱程度可能一样。由于所有的鱼头都朝向左<span id="more"></span>边，所以每只鱼只能看见在它左边的鱼的可爱程度，它们心里都在计算，在自己的眼力范围内有多少只鱼不如自己可爱呢。请你帮这些可爱但是鱼脑不够用的小鱼们计算一下。**(比较前面有多少个比它大的数并输出)**</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行输入一个整数 n，表示鱼的数目。</p>
+<p>第二行内输入 n 个整数，用空格间隔，依次表示从左到右每只小鱼的可爱程度。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>行内输出 n<em>n</em> 个整数，用空格间隔，依次表示每只小鱼眼中有多少只鱼不如自己可爱。</p>
+<h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p><strong>输入 #1</strong>复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">4 3 0 5 1 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出 #1</strong>复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 3 1 2</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> n,i,j,m;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="type">int</span> a[n];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;<span class="comment">//输入数组</span></span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]); </span><br><span class="line">	&#125;<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">		m=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=j;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[j]&gt;a[i])&#123;<span class="comment">//将a[j]与a[j]前的每一项进行比较</span></span><br><span class="line">				m++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,m);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h1 id="737-数组替换"><a href="#737-数组替换" class="headerlink" title="737. 数组替换"></a>737. 数组替换</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>输入一个长度为 1010 的整数数组 X[10]X[10]，将里面的非正整数全部替换为 11，输出替换完成后的数组。</p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入包含 1010 个整数，每个整数占一行。</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出新数组中的所有元素，每个元素占一行。</p>
+<p>输出格式为 <code>X[i] = x</code>，其中 ii 为元素编号（从 00 开始），xx 为元素的值。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100≤X[i]≤100−100≤X[i]≤100</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">-9</span><br><span class="line">0</span><br><span class="line">-4</span><br><span class="line">-10</span><br><span class="line">0</span><br><span class="line">-2</span><br><span class="line">-7</span><br><span class="line">7</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">X[0] = 10</span><br><span class="line">X[1] = 1</span><br><span class="line">X[2] = 1</span><br><span class="line">X[3] = 1</span><br><span class="line">X[4] = 1</span><br><span class="line">X[5] = 1</span><br><span class="line">X[6] = 1</span><br><span class="line">X[7] = 1</span><br><span class="line">X[8] = 7</span><br><span class="line">X[9] = 4</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-1"><a href="#答案-1" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123; </span><br><span class="line">    cin &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">if</span>(a[i]&lt;=<span class="number">0</span>) a[i]=<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;X[%d] = %d\n&quot;</span>,i,a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="738-数组填充"><a href="#738-数组填充" class="headerlink" title="738. 数组填充"></a>738. 数组填充</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>输入一个整数 V，输出一个长度为 10 的数组 N，数组中的第一个元素为 V，每个后续元素的值都为上一个元素的值的 2 倍。</p>
+<p>例如，如果输入整数为 1，则数组为：1,2,4,8…</p>
+<h4 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入一个整数 V。</p>
+<h4 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出数组中的所有元素，每个元素占一行。</p>
+<p>输出格式为 <code>N[i] = x</code>，其中 ii 为元素编号（从 00 开始），xx 为元素的值。</p>
+<h4 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤V≤50</p>
+<h4 id="输入样例：-1"><a href="#输入样例：-1" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-1"><a href="#输出样例：-1" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">N[0] = 1</span><br><span class="line">N[1] = 2</span><br><span class="line">N[2] = 4</span><br><span class="line">N[3] = 8</span><br><span class="line">N[4] = 16</span><br><span class="line">N[5] = 32</span><br><span class="line">N[6] = 64</span><br><span class="line">N[7] = 128</span><br><span class="line">N[8] = 256</span><br><span class="line">N[9] = 512</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-2"><a href="#答案-2" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> a[<span class="number">10</span>]=&#123;n&#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;N[%d] = %d\n&quot;</span>,<span class="number">0</span>,a[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        a[i]=a[i<span class="number">-1</span>]*<span class="number">2</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;N[%d] = %d\n&quot;</span>,i,a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="739-数组选择"><a href="#739-数组选择" class="headerlink" title="739. 数组选择"></a>739. 数组选择</h1><h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p>输入一个长度为 100 的数组 A，请你按顺序输出其中不大于 10 的所有元素。</p>
+<h4 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入 100 个数，每个数占一行，表示数组的所有元素的值。</p>
+<p>每个数可能是整数也可能是浮点数。</p>
+<h4 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h4><p>按顺序输出数组中的所有不大于 10 的元素，每个元素占一行。</p>
+<p>输出格式为 <code>A[i] = x</code>，其中 ii 为元素编号，xx 为元素的值。</p>
+<p>注意，所有的 xx 均保留一位小数。</p>
+<h4 id="数据范围-2"><a href="#数据范围-2" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100≤A[i]≤100−100≤A[i]≤100</p>
+<h4 id="输入样例：-2"><a href="#输入样例：-2" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">-5</span><br><span class="line">63</span><br><span class="line">-8.5</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-2"><a href="#输出样例：-2" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A[0] = 0.0</span><br><span class="line">A[1] = -5.0</span><br><span class="line">A[3] = -8.5</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-3"><a href="#答案-3" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">100</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        <span class="keyword">if</span>(a[i] &lt;= <span class="number">10</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;A[%d] = %.1lf\n&quot;</span>,i,a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="743-数组中的行"><a href="#743-数组中的行" class="headerlink" title="743. 数组中的行"></a>743. 数组中的行</h1><h2 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h2><p>输入一个二维数组 M[12][12]M[12][12]，根据输入的要求，求出二维数组中某一行的元素的平均值或元素的和。</p>
+<h4 id="输入格式-4"><a href="#输入格式-4" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入整数 L，表示所求的具体行数（行数从 0 开始计数）。</p>
+<p>第二行包含一个大写字母，若为 <code>S</code>，则表示需要求出第 L 行的元素的和，若为 <code>M</code>，则表示需要求出第 LL 行的元素的平均值。</p>
+<p>接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第 i+1 行的第 j+1 个数表示数组元素 M [ i ][ j ]M[ i ][ j ]。</p>
+<h4 id="输出格式-4"><a href="#输出格式-4" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个数，表示所求的平均数或元素的和的值，保留一位小数。</p>
+<h4 id="数据范围-3"><a href="#数据范围-3" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100.0≤M[i][j]≤100.0</p>
+<h4 id="输入样例：-3"><a href="#输入样例：-3" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">S</span><br><span class="line">8.3 -9.4 -5.6 9.9 2.2 3.2 6.9 7.7 -2.9 -6.3 3.9 -1.4</span><br><span class="line">-0.5 4.3 -0.3 2.3 0.7 -3.1 -6.3 5.7 -7.7 -3.7 9.7 3.8</span><br><span class="line">5.8 -9.1 3.5 7.0 2.5 -2.3 6.9 2.7 5.8 -4.6 -7.8 4.3</span><br><span class="line">-1.7 -8.9 -2.6 7.5 -9.6 6.4 -4.7 -8.0 0.6 6.7 -1.8 -0.4</span><br><span class="line">-9.8 8.9 -3.8 -2.1 5.8 -9.4 1.3 6.3 -1.3 -6.3 -6.6 8.8</span><br><span class="line">-6.3 -7.2 -6.3 -5.9 6.2 9.3 2.0 -4.3 2.7 3.6 -4.6 8.7</span><br><span class="line">3.8 7.4 8.7 -2.8 6.0 -9.2 1.9 3.1 -7.2 -6.0 9.7 -8.4</span><br><span class="line">-9.8 6.6 8.6 2.3 1.1 -2.9 6.6 -1.5 2.1 -5.1 6.4 -7.5</span><br><span class="line">-0.6 -1.6 9.5 -6.6 3.0 3.4 -7.5 -7.9 3.1 2.0 1.7 -7.6</span><br><span class="line">-9.0 9.4 6.6 -0.2 1.4 6.5 8.6 2.0 -1.3 0.2 4.0 -2.4</span><br><span class="line">-7.3 -6.3 -8.6 -7.5 8.5 1.4 -3.3 7.1 0.8 3.3 3.0 0.1</span><br><span class="line">3.3 9.0 1.7 5.2 -3.7 8.9 3.8 -7.4 -2.8 0.6 -2.4 7.1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-3"><a href="#输出样例：-3" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6.9</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-4"><a href="#答案-4" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="type">double</span> sum;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">12</span>][<span class="number">12</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    cin &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=n,j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">        sum += a[i][j];</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;S&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;M&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1f&quot;</span>,sum/<span class="number">12.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="745-数组的右上半部分"><a href="#745-数组的右上半部分" class="headerlink" title="745. 数组的右上半部分"></a>745. 数组的右上半部分</h1><h2 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a>题目</h2><p>输入一个二维数组 M[12][12]M[12][12]，根据输入的要求，求出二维数组的右上半部分元素的平均值或元素的和。</p>
+<p>右上半部分是指主对角线上方的部分，如下图所示，黄色部分为对角线，绿色部分为右上半部分：</p>
+<p><img src="https://cdn.acwing.com/media/article/image/2019/05/03/19_799a14f86d-UOJ_1183.png" alt="UOJ_1183.png"></p>
+<h4 id="输入格式-5"><a href="#输入格式-5" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个大写字母，若为 <code>S</code>，则表示需要求出右上半部分的元素的和，若为 <code>M</code>，则表示需要求出右上半部分的元素的平均值。</p>
+<p>接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第 i+1 行的第 j+1 个数表示数组元素 M[ i ][ j ]</p>
+<h4 id="输出格式-5"><a href="#输出格式-5" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个数，表示所求的平均数或元素的和的值，保留一位小数。</p>
+<h4 id="数据范围-4"><a href="#数据范围-4" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100.0≤M[i][j]≤100.0</p>
+<h4 id="输入样例：-4"><a href="#输入样例：-4" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">M</span><br><span class="line">-6.5 8.2 0.7 9.0 0.8 -4.3 0.9 -0.0 -7.9 7.1 -1.6 4.6</span><br><span class="line">-9.4 -9.0 1.5 -9.0 -5.1 -0.5 -2.8 -9.1 8.0 -6.9 -5.5 -6.6</span><br><span class="line">-6.8 0.3 3.8 6.1 -9.9 -9.3 8.5 8.6 5.0 6.9 -3.6 -3.0</span><br><span class="line">-0.8 -1.6 -7.3 -6.7 4.4 -9.1 -9.0 1.6 0.3 -6.0 6.0 -0.8</span><br><span class="line">-0.8 -6.0 -4.9 -3.9 6.4 6.2 -4.2 -0.9 7.9 1.6 -8.2 -9.2</span><br><span class="line">7.8 -5.8 -5.8 -5.8 7.2 0.5 -7.9 1.2 -6.8 -9.1 0.3 -1.4</span><br><span class="line">4.3 -7.2 3.5 -6.4 -9.1 -6.0 3.5 -5.1 -5.6 -6.9 -9.1 -2.1</span><br><span class="line">-7.6 -7.1 0.7 -1.7 5.0 -9.0 1.4 -6.2 7.6 4.8 -7.5 4.0</span><br><span class="line">-0.2 0.3 -4.2 8.4 0.7 -6.4 -2.7 3.5 -0.9 3.7 0.9 -2.7</span><br><span class="line">7.1 0.1 8.4 -5.1 -7.9 -0.5 -5.3 -5.7 -4.6 9.6 -8.3 7.0</span><br><span class="line">9.6 -9.8 3.3 -9.9 -6.8 6.7 3.1 1.2 -9.5 -4.3 -1.7 -9.7</span><br><span class="line">1.8 5.0 8.3 -0.7 -0.9 3.2 2.5 0.5 7.3 8.3 0.3 0.9</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-4"><a href="#输出样例：-4" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1.2</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-5"><a href="#答案-5" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">12</span>][<span class="number">12</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">double</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    cin &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">    <span class="type">int</span> c=<span class="number">0</span>;        </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += a[i][j];</span><br><span class="line">            c++;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;S&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;M&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum/c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="747-数组的左上半部分"><a href="#747-数组的左上半部分" class="headerlink" title="747. 数组的左上半部分"></a>747. 数组的左上半部分</h1><h2 id="题目-5"><a href="#题目-5" class="headerlink" title="题目"></a>题目</h2><p>输入一个二维数组 M[12][12]M[12][12]，根据输入的要求，求出二维数组的左上半部分元素的平均值或元素的和。</p>
+<p>左上半部分是指次对角线上方的部分，如下图所示，黄色部分为对角线，绿色部分为左上半部分：</p>
+<p><img src="https://cdn.acwing.com/media/article/image/2019/05/03/19_0803f9d66d-UOJ_1185.png" alt="UOJ_1185.png"></p>
+<h4 id="输入格式-6"><a href="#输入格式-6" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个大写字母，若为 <code>S</code>，则表示需要求出左上半部分的元素的和，若为 <code>M</code>，则表示需要求出左上半部分的元素的平均值。</p>
+<p>接下来 1212 行，每行包含 1212 个用空格隔开的浮点数，表示这个二维数组，其中第 i+1i+1 行的第 j+1j+1 个数表示数组元素 M[i][j]M[i][j]。</p>
+<h4 id="输出格式-6"><a href="#输出格式-6" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个数，表示所求的平均数或和的值，保留一位小数。</p>
+<h4 id="数据范围-5"><a href="#数据范围-5" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100.0≤M[i][j]≤100.0−100.0≤M[i][j]≤100.0</p>
+<h4 id="输入样例：-5"><a href="#输入样例：-5" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">M</span><br><span class="line">-0.4 -7.7 8.8 1.9 -9.1 -8.8 4.4 -8.8 0.5 -5.8 1.3 -8.0</span><br><span class="line">-1.7 -4.6 -7.0 4.7 9.6 2.0 8.2 -6.4 2.2 2.3 7.3 -0.4</span><br><span class="line">-8.1 4.0 -6.9 8.1 6.2 2.5 -0.2 -6.2 -1.5 9.4 -9.8 -3.5</span><br><span class="line">-2.3 8.4 1.3 1.4 -7.7 1.3 -2.3 -0.1 -5.4 -7.6 2.5 -7.7</span><br><span class="line">6.2 -1.5 -6.9 -3.9 -7.9 5.1 -8.8 9.0 -7.4 -3.9 -2.7 0.9</span><br><span class="line">-6.8 0.8 -9.9 9.1 -3.7 -8.4 4.4 9.8 -6.3 -6.4 -3.7 2.8</span><br><span class="line">-3.8 5.0 -4.6 2.0 4.0 9.2 -8.9 0.5 -3.9 6.5 -4.3 -9.9</span><br><span class="line">-7.2 6.2 -1.2 4.1 -7.4 -4.6 4.7 -0.4 -2.2 -9.1 0.4 -5.8</span><br><span class="line">9.1 -6.4 9.2 0.7 10.0 -5.7 -9.7 -4.4 4.7 4.7 4.9 2.1</span><br><span class="line">-1.2 -6.2 -8.2 7.0 -5.3 4.9 5.5 7.2 3.4 3.2 -0.2 9.9</span><br><span class="line">-6.9 -6.2 5.1 8.5 7.1 -0.8 -0.7 2.7 -6.0 4.2 -8.2 -9.8</span><br><span class="line">-3.5 7.7 5.4 2.8 1.6 -1.0 6.1 7.7 -6.5 -8.3 -8.5 9.4</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-5"><a href="#输出样例：-5" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-0.8</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-6"><a href="#答案-6" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">12</span>][<span class="number">12</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">double</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    cin &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>-i<span class="number">-1</span>;j++)</span><br><span class="line">            sum += a[i][j];</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;S&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;M&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum/<span class="number">66</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="749-数组的上方区域"><a href="#749-数组的上方区域" class="headerlink" title="749. 数组的上方区域"></a>749. 数组的上方区域</h1><h2 id="题目-6"><a href="#题目-6" class="headerlink" title="题目"></a>题目</h2><p>输入一个二维数组 M[12][12]M[12][12]，根据输入的要求，求出二维数组的上方区域元素的平均值或元素的和。</p>
+<p>数组的两条对角线将数组分为了上下左右四个部分，如下图所示，黄色部分为对角线，绿色部分为上方区域：</p>
+<p><img src="https://cdn.acwing.com/media/article/image/2019/05/03/19_fb1e71426d-UOJ_1187.png" alt="UOJ_1187.png"></p>
+<h4 id="输入格式-7"><a href="#输入格式-7" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个大写字母，若为 <code>S</code>，则表示需要求出上方区域的元素的和，若为 <code>M</code>，则表示需要求出上方区域的元素的平均值。</p>
+<p>接下来 1212 行，每行包含 1212 个用空格隔开的浮点数，表示这个二维数组，其中第 i+1i+1 行的第 j+1j+1 个数表示数组元素 M[i][j]M[i][j]。</p>
+<h4 id="输出格式-7"><a href="#输出格式-7" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个数，表示所求的平均数或和的值，保留一位小数。</p>
+<p>输出结果与标准答案据对误差不超过 0.10.1 即视为正确。</p>
+<h4 id="数据范围-6"><a href="#数据范围-6" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100.0≤M[i][j]≤100.0−100.0≤M[i][j]≤100.0</p>
+<h4 id="输入样例：-6"><a href="#输入样例：-6" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">S</span><br><span class="line">-4.8 -8.0 -2.9 6.7 -7.0 2.6 6.5 1.7 1.9 5.6 -1.6 -6.3</span><br><span class="line">-4.3 1.5 8.7 -0.3 5.4 -9.3 4.8 7.0 3.6 -8.3 -1.0 1.3</span><br><span class="line">-9.9 9.7 -6.3 5.8 2.9 2.9 -7.7 4.9 -0.6 7.2 6.4 7.7</span><br><span class="line">2.8 -5.8 -0.0 2.2 4.0 7.7 -3.0 -7.5 -3.5 9.7 -4.3 -8.6</span><br><span class="line">-1.8 -0.1 5.4 0.6 9.9 -3.7 -1.1 0.8 -0.2 -0.0 9.9 4.5</span><br><span class="line">3.0 -3.9 2.1 -9.7 5.5 9.4 -4.6 3.3 -9.6 5.1 -4.5 1.5</span><br><span class="line">4.3 -5.4 -7.9 9.2 -7.7 -9.6 -1.5 -1.6 -7.2 2.0 -3.7 -0.7</span><br><span class="line">8.0 2.8 -4.1 7.1 8.4 -5.6 3.9 -9.7 -1.1 3.0 -8.5 -3.3</span><br><span class="line">1.7 5.1 0.1 9.2 4.5 9.7 7.2 8.6 8.7 1.1 6.7 0.3</span><br><span class="line">-3.6 -7.1 -8.9 7.1 -5.9 1.6 -7.4 6.7 3.9 4.3 -2.4 -3.7</span><br><span class="line">8.9 -6.2 5.0 -8.6 -1.3 -8.8 2.6 8.9 5.5 9.0 -2.2 -4.4</span><br><span class="line">5.7 3.7 1.8 -2.1 -7.3 -7.9 4.7 6.0 3.3 -2.8 1.4 -6.9</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-6"><a href="#输出样例：-6" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">21.7</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-7"><a href="#答案-7" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">12</span>][<span class="number">12</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">double</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    cin &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;<span class="number">12</span>-i<span class="number">-1</span>;j++)</span><br><span class="line">            sum += a[i][j];</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;S&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;M&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum/<span class="number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="751-数组的左方区域"><a href="#751-数组的左方区域" class="headerlink" title="751. 数组的左方区域"></a>751. 数组的左方区域</h1><h2 id="题目-7"><a href="#题目-7" class="headerlink" title="题目"></a>题目</h2><p>输入一个二维数组 M[12][12]M[12][12]，根据输入的要求，求出二维数组的左方区域元素的平均值或元素的和。</p>
+<p>数组的两条对角线将数组分为了上下左右四个部分，如下图所示，黄色部分为对角线，绿色部分为左方区域：</p>
+<p><img src="https://cdn.acwing.com/media/article/image/2019/05/03/19_4750e19a6d-UOJ_1189.png" alt="UOJ_1189.png"></p>
+<h4 id="输入格式-8"><a href="#输入格式-8" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个大写字母，若为 <code>S</code>，则表示需要求出左方区域的元素的和，若为 <code>M</code>，则表示需要求出左方区域的元素的平均值。</p>
+<p>接下来 1212 行，每行包含 1212 个用空格隔开的浮点数，表示这个二维数组，其中第 i+1i+1 行的第 j+1j+1 个数表示数组元素 M[i][j]M[i][j]。</p>
+<h4 id="输出格式-8"><a href="#输出格式-8" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个数，表示所求的平均数或和的值，保留一位小数。</p>
+<h4 id="数据范围-7"><a href="#数据范围-7" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100.0≤M[i][j]≤100.0−100.0≤M[i][j]≤100.0</p>
+<h4 id="输入样例：-7"><a href="#输入样例：-7" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">S</span><br><span class="line">4.7 -3.3 -2.3 4.5 -7.0 8.7 -4.1 -3.0 -7.6 6.3 -6.6 -4.7</span><br><span class="line">-7.2 9.3 -7.6 9.1 9.2 9.0 5.5 -7.5 -9.3 -1.6 -3.5 -4.2</span><br><span class="line">0.5 -7.5 -8.3 -9.0 -6.4 3.8 0.1 -3.5 7.9 2.1 2.4 -6.2</span><br><span class="line">7.0 5.7 -9.0 -5.8 1.6 2.6 -9.2 -6.2 4.6 8.2 -8.3 -1.4</span><br><span class="line">3.8 -9.9 6.2 -2.5 -3.5 9.4 1.6 7.0 3.3 -0.5 6.7 6.0</span><br><span class="line">1.6 -3.8 5.0 8.8 4.2 7.7 0.7 7.4 7.9 -5.9 4.4 3.3</span><br><span class="line">3.7 6.2 6.7 -1.4 6.1 -6.0 8.5 9.1 5.7 -4.2 5.9 -3.5</span><br><span class="line">5.0 0.3 2.2 -3.6 6.3 -10.0 9.5 -4.7 2.7 8.1 7.5 -8.4</span><br><span class="line">-5.7 -0.3 -3.7 -3.3 7.7 9.3 -1.3 1.0 0.3 1.9 9.9 9.0</span><br><span class="line">-7.4 1.3 -9.6 -3.6 2.2 3.4 -3.6 3.5 8.3 0.5 9.7 -6.8</span><br><span class="line">1.0 -2.7 -1.5 5.4 -6.5 -3.7 5.6 8.0 -9.9 0.1 2.2 7.6</span><br><span class="line">5.6 4.3 1.5 -0.8 5.8 -5.1 5.5 6.2 -5.8 8.8 -0.6 -2.3</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-7"><a href="#输出样例：-7" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13.3</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-8"><a href="#答案-8" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">12</span>][<span class="number">12</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">double</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    cin &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">    <span class="type">int</span> c=<span class="number">1</span>;       </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">        <span class="type">int</span> t=i;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;<span class="number">5</span>)&#123;</span><br><span class="line">            t=t-c;</span><br><span class="line">            c += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;t;j++)</span><br><span class="line">           sum += a[i][j];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;S&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;M&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum/<span class="number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="753-平方矩阵-I"><a href="#753-平方矩阵-I" class="headerlink" title="*753. 平方矩阵 I"></a>*753. 平方矩阵 I</h1><h2 id="题目-8"><a href="#题目-8" class="headerlink" title="题目"></a>题目</h2><p>输入整数 N，输出一个 N 阶的回字形二维数组。</p>
+<p>数组的最外层为 1，次外层为 2，以此类推。</p>
+<h4 id="输入格式-9"><a href="#输入格式-9" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入包含多行，每行包含一个整数 N。</p>
+<p>当输入行为 N&#x3D;0 时，表示输入结束，且该行无需作任何处理。</p>
+<h4 id="输出格式-9"><a href="#输出格式-9" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个输入整数 N，输出一个满足要求的 N 阶二维数组。</p>
+<p>每个数组占 N 行，每行包含 N 个用空格隔开的整数。</p>
+<p>每个数组输出完毕后，输出一个空行。</p>
+<h4 id="数据范围-8"><a href="#数据范围-8" class="headerlink" title="数据范围"></a>数据范围</h4><p>0≤N≤100</p>
+<h4 id="输入样例：-8"><a href="#输入样例：-8" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-8"><a href="#输出样例：-8" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"></span><br><span class="line">1 1</span><br><span class="line">1 1</span><br><span class="line"></span><br><span class="line">1 1 1</span><br><span class="line">1 2 1</span><br><span class="line">1 1 1</span><br><span class="line"></span><br><span class="line">1 1 1 1</span><br><span class="line">1 2 2 1</span><br><span class="line">1 2 2 1</span><br><span class="line">1 1 1 1</span><br><span class="line"></span><br><span class="line">1 1 1 1 1</span><br><span class="line">1 2 2 2 1</span><br><span class="line">1 2 3 2 1</span><br><span class="line">1 2 2 2 1</span><br><span class="line">1 1 1 1 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-9"><a href="#答案-9" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(cin &gt;&gt; n,n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">                <span class="type">int</span> up=i,down=n-i+<span class="number">1</span>,left=j,right=n-j+<span class="number">1</span>;<span class="comment">//到上下左右的最小距离</span></span><br><span class="line">                cout &lt;&lt; <span class="built_in">min</span>(<span class="built_in">min</span>(up,down),<span class="built_in">min</span>(left,right)) &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">            &#125;cout &lt;&lt; endl;</span><br><span class="line">        &#125;cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="740-数组变换"><a href="#740-数组变换" class="headerlink" title="740. 数组变换"></a>740. 数组变换</h1><h2 id="题目-9"><a href="#题目-9" class="headerlink" title="题目"></a>题目</h2><p>输入一个长度为 20  的整数数组 N，将整个数组翻转，使得第一个元素成为倒数第一个元素，第二个元素成为倒数第二个元素，…，倒数第二个元素成为第二个元素，倒数第一个元素成为第一个元素。</p>
+<p>输出翻转后的数组。</p>
+<h4 id="输入格式-10"><a href="#输入格式-10" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入包含 20 个整数，每个数占一行。</p>
+<h4 id="输出格式-10"><a href="#输出格式-10" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出新数组中的所有元素，每个元素占一行。</p>
+<p>输出格式为 <code>N[i] = x</code>，其中 i 为元素编号（从 0 开始） ，x 为元素的值。</p>
+<h4 id="数据范围-9"><a href="#数据范围-9" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100≤N[i]≤100 </p>
+<h4 id="输入样例：-9"><a href="#输入样例：-9" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">-5</span><br><span class="line">...</span><br><span class="line">63</span><br><span class="line">23</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-9"><a href="#输出样例：-9" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">N[0] = 23</span><br><span class="line">N[1] = 63</span><br><span class="line">...</span><br><span class="line">N[18] = -5</span><br><span class="line">N[19] = 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-10"><a href="#答案-10" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">int</span> b[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">20</span>;i++)&#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> t=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">20</span>;i++)&#123;</span><br><span class="line">        b[i]=a[<span class="number">19</span>-t];</span><br><span class="line">        t++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">20</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;N[%d] = %d\n&quot;</span>,i,b[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="741-斐波那契数列"><a href="#741-斐波那契数列" class="headerlink" title="741. 斐波那契数列"></a>741. 斐波那契数列</h1><h2 id="题目-10"><a href="#题目-10" class="headerlink" title="题目"></a>题目</h2><p>输入整数 N，求出斐波那契数列中的第 N 项是多少。</p>
+<p>斐波那契数列的第 0 项是 0，第 1 项是 1，从第 2 项开始的每一项都等于前两项之和。</p>
+<h4 id="输入格式-11"><a href="#输入格式-11" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 T，表示共 有 T 个测试数据。</p>
+<p>接下来 T 行，每行包含一个整数 N。</p>
+<h4 id="输出格式-11"><a href="#输出格式-11" class="headerlink" title="输出格式"></a>输出格式</h4><p>每个测试数据输出一个结果，每个结果占一行，</p>
+<p>结果格式为 <code>Fib(N) = x</code>，其中 N 为项数， x 为第 N 项的值。</p>
+<h4 id="数据范围-10"><a href="#数据范围-10" class="headerlink" title="数据范围"></a>数据范围</h4><p>0≤N≤60 </p>
+<h4 id="输入样例：-10"><a href="#输入样例：-10" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">0</span><br><span class="line">4</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-10"><a href="#输出样例：-10" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Fib(0) = 0</span><br><span class="line">Fib(4) = 3</span><br><span class="line">Fib(2) = 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-11"><a href="#答案-11" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,t;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> <span class="type">int</span> a[<span class="number">60</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> m=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(cin &gt;&gt; m,n--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(m==<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;Fib(0) = 0\n&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;<span class="number">60</span>;i++)&#123;</span><br><span class="line">            a[i]=a[i<span class="number">-1</span>]+a[i<span class="number">-2</span>];</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(a[m]==a[i]) <span class="built_in">printf</span>(<span class="string">&quot;Fib(%d) = %lld\n&quot;</span>,m,a[m]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="742-最小数和它的位置"><a href="#742-最小数和它的位置" class="headerlink" title="742. 最小数和它的位置"></a>742. 最小数和它的位置</h1><h2 id="题目-11"><a href="#题目-11" class="headerlink" title="题目"></a>题目</h2><p>输入一个整数 N 和一个长度为 N 的整数数组 X。</p>
+<p>请你找到数组中最小的元素，并输出它的值和下标。</p>
+<p>注意，如果有多个最小值，则返回下标最小的那个。</p>
+<h4 id="输入格式-12"><a href="#输入格式-12" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 N。</p>
+<p>第二行包含 N 个用空格隔开的整数 X[i]。</p>
+<h4 id="输出格式-12"><a href="#输出格式-12" class="headerlink" title="输出格式"></a>输出格式</h4><p>第一行输出 <code>Minimum value: x</code>，其中 xx 为数组元素最小值。</p>
+<p>第二行输出 <code>Position: y</code>，其中 y 为最小值元素的下标（下标从 0 开始计数）。</p>
+<h4 id="数据范围-11"><a href="#数据范围-11" class="headerlink" title="数据范围"></a>数据范围</h4><p>1&lt;N≤1000 ，<br>−1000≤X[i]≤1000 </p>
+<h4 id="输入样例：-11"><a href="#输入样例：-11" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">1 2 3 4 -5 6 7 8 9 10</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-11"><a href="#输出样例：-11" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Minimum value: -5</span><br><span class="line">Position: 4</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-12"><a href="#答案-12" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> a[n];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&lt;a[k])&#123;</span><br><span class="line">            k=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Minimum value: %d\nPosition: %d&quot;</span>,a[k],k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="744-数组中的列"><a href="#744-数组中的列" class="headerlink" title="744. 数组中的列"></a>744. 数组中的列</h1><h2 id="题目-12"><a href="#题目-12" class="headerlink" title="题目"></a>题目</h2><p>输入一个二维数组 M[12][12]M[12][12]，根据输入的要求，求出二维数组中某一列的元素的平均值或元素的和。</p>
+<h4 id="输入格式-13"><a href="#输入格式-13" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入整数 C，表示所求的具体列数（列数从 0 开始计数）。</p>
+<p>第二行包含一个大写字母，若为 <code>S</code>，则表示需要求出第 CC 列的元素的和，若为 <code>M</code>，则表示需要求出第 CC 列的元素的平均值。</p>
+<p>接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第 i+1 行的第 j+1 个数表示数组元素 M[i][j]M[i][j]。</p>
+<h4 id="输出格式-13"><a href="#输出格式-13" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个数，表示所求的平均数或元素的和的值，保留一位小数。</p>
+<h4 id="数据范围-12"><a href="#数据范围-12" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100.0≤M[i][j]≤100.0 </p>
+<h4 id="输入样例：-12"><a href="#输入样例：-12" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">S</span><br><span class="line">-9.0 -2.4 -3.3 2.4 -9.7 -5.7 -5.3 6.5 -7.3 4.8 -4.1 3.9</span><br><span class="line">1.6 -0.9 9.2 -7.5 1.0 -8.0 -4.1 -4.0 -0.1 -9.0 8.4 4.9</span><br><span class="line">-8.2 -0.3 -5.1 -5.6 6.6 0.9 -1.0 -5.4 -2.1 -4.5 -8.7 -1.1</span><br><span class="line">-4.2 6.5 -8.2 3.6 -4.6 -9.2 -1.7 6.9 -9.0 -9.8 7.7 -3.4</span><br><span class="line">-8.0 5.7 4.8 0.3 -1.4 2.8 -6.3 9.3 0.3 6.3 1.5 -1.7</span><br><span class="line">1.7 -0.0 9.7 -6.6 1.3 -2.0 -6.1 2.0 -7.8 -4.7 -9.1 6.0</span><br><span class="line">-8.2 -1.7 9.4 -1.2 -1.0 -9.0 -7.0 -6.9 -1.6 -6.8 -6.7 1.8</span><br><span class="line">4.8 1.3 -6.1 -0.6 0.5 -2.9 -6.8 1.5 5.8 3.2 0.0 7.7</span><br><span class="line">6.3 1.1 4.7 7.3 7.6 5.6 0.9 9.2 1.3 -4.9 7.8 -4.9</span><br><span class="line">0.5 3.5 -5.0 9.0 8.8 8.7 7.5 7.5 -9.6 -6.9 -1.6 6.9</span><br><span class="line">7.8 5.6 -6.4 3.6 2.3 0.5 4.1 6.1 8.6 -9.3 2.2 -0.4</span><br><span class="line">9.9 0.9 6.4 -2.8 -4.2 -7.6 0.6 9.6 3.0 0.9 5.1 4.5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-12"><a href="#输出样例：-12" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">19.3</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-13"><a href="#答案-13" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">12</span>][<span class="number">12</span>]; </span><br><span class="line">    <span class="type">char</span> c;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; c;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">        cin &gt;&gt; a[i][j];</span><br><span class="line">     </span><br><span class="line">    <span class="type">double</span> sum=<span class="number">0</span>;   </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)&#123;</span><br><span class="line">      sum += a[i][n];  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(c==<span class="string">&#x27;S&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">if</span>(c==<span class="string">&#x27;M&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum/<span class="number">12</span>);</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="748-数组的右下半部分"><a href="#748-数组的右下半部分" class="headerlink" title="748. 数组的右下半部分"></a>748. 数组的右下半部分</h1><h2 id="题目-13"><a href="#题目-13" class="headerlink" title="题目"></a>题目</h2><p>输入一个二维数组 M[12][12] ，根据输入的要求，求出二维数组的右下半部分元素的平均值或元素的和。</p>
+<p>右下半部分是指次对角线下方的部分，如下图所示，黄色部分为对角线，绿色部分为右下半部分：</p>
+<p><img src="https://cdn.acwing.com/media/article/image/2019/05/03/19_fde98b8e6d-UOJ_1186.png" alt="UOJ_1186.png"></p>
+<h4 id="输入格式-14"><a href="#输入格式-14" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个大写字母，若为 <code>S</code>，则表示需要求出右下半部分的元素的和，若为 <code>M</code>，则表示需要求出右下半部分的元素的平均值。</p>
+<p>接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第 i+1 行的第 j+1个数表示数组元素 M[i][j] 。</p>
+<h4 id="输出格式-14"><a href="#输出格式-14" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个数，表示所求的平均数或和的值，保留一位小数。</p>
+<h4 id="数据范围-13"><a href="#数据范围-13" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100.0≤M[i][j]≤100.0 </p>
+<h4 id="输入样例：-13"><a href="#输入样例：-13" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">S</span><br><span class="line">9.7 -4.9 6.1 -6.1 -9.6 1.0 -3.2 0.6 3.2 -9.8 4.9 1.2</span><br><span class="line">-2.8 -5.3 2.8 -1.9 -5.4 7.5 -2.0 5.7 2.3 5.3 -7.5 8.9</span><br><span class="line">6.0 4.3 3.8 -6.7 8.1 -0.5 7.8 -2.2 -1.0 4.0 -4.9 -9.4</span><br><span class="line">5.4 3.7 -6.5 -3.9 -3.3 4.1 -2.5 -4.7 8.2 1.4 1.8 4.7</span><br><span class="line">2.4 9.0 -4.3 9.6 8.6 -6.1 -7.4 8.6 5.6 0.5 -0.4 5.2</span><br><span class="line">-5.2 2.9 -5.6 4.0 -0.2 3.8 -4.1 -1.6 -3.8 -3.1 -1.1 3.3</span><br><span class="line">-9.4 -1.4 0.6 6.5 -4.3 -8.3 6.1 2.9 -5.2 2.5 9.8 -7.7</span><br><span class="line">-2.9 -3.6 7.9 -5.8 -4.7 8.2 -6.2 1.0 7.4 -1.0 -4.4 -4.5</span><br><span class="line">0.1 9.5 4.9 1.5 0.8 -8.2 0.4 9.5 -0.8 -0.9 9.7 -2.1</span><br><span class="line">0.1 -7.6 7.8 -6.9 5.5 1.4 4.0 7.8 1.0 -1.2 9.7 -1.9</span><br><span class="line">-4.6 2.3 -5.5 8.2 -4.8 -3.7 5.4 0.2 -2.4 -0.8 7.4 0.0</span><br><span class="line">-0.1 8.2 0.8 -3.5 -7.6 -0.5 5.6 8.4 -8.6 0.9 9.0 -7.5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-13"><a href="#输出样例：-13" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">53.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-14"><a href="#答案-14" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">12</span>][<span class="number">12</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">double</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    cin &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">    <span class="type">int</span> c=<span class="number">0</span>;       </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">12</span>-i;j&lt;<span class="number">12</span>;j++)&#123;</span><br><span class="line">            sum += a[i][j];</span><br><span class="line">            c++;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;S&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;M&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum/c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="746-数组的左下半部分"><a href="#746-数组的左下半部分" class="headerlink" title="746. 数组的左下半部分"></a>746. 数组的左下半部分</h1><h2 id="题目-14"><a href="#题目-14" class="headerlink" title="题目"></a>题目</h2><p>输入一个二维数组 M[12][12] ，根据输入的要求，求出二维数组的左下半部分元素的平均值或元素的和。</p>
+<p>左下半部分是指主对角线下方的部分，如下图所示，黄色部分为对角线，绿色部分为左下半部分：</p>
+<p><img src="https://cdn.acwing.com/media/article/image/2019/05/03/19_5f9eed246d-UOJ_1184.png" alt="UOJ_1184.png"></p>
+<h4 id="输入格式-15"><a href="#输入格式-15" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个大写字母，若为 <code>S</code>，则表示需要求出左下半部分的元素的和，若为 <code>M</code>，则表示需要求出左下半部分的元素的平均值。</p>
+<p>接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第 i+1 行的第 j+1 个数表示数组元素 M[i][j]。</p>
+<h4 id="输出格式-15"><a href="#输出格式-15" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个数，表示所求的平均数或和的值，保留一位小数。</p>
+<h4 id="数据范围-14"><a href="#数据范围-14" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100.0≤M[i][j]≤100.0 输入样例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">S</span><br><span class="line">8.7 5.6 -2.0 -2.1 -7.9 -9.0 -6.4 1.7 2.9 -2.3 8.4 4.0</span><br><span class="line">-7.3 -2.1 0.6 -9.8 9.6 5.6 -1.3 -3.8 -9.3 -8.0 -2.0 2.9</span><br><span class="line">-4.9 -0.5 -5.5 -0.2 -4.4 -6.1 7.6 6.9 -8.0 6.8 9.1 -8.5</span><br><span class="line">-1.3 5.5 4.6 6.6 8.1 7.9 -9.3 9.6 4.6 0.9 -3.5 -4.3</span><br><span class="line">-7.0 -1.2 7.0 7.1 -5.7 7.8 -2.3 4.3 0.2 -0.4 -6.6 7.6</span><br><span class="line">-3.2 -5.4 -4.7 4.7 3.6 8.8 5.1 -3.1 -2.9 2.8 -4.3 -1.4</span><br><span class="line">-1.8 -3.3 -5.6 1.8 8.3 -0.5 2.0 -3.9 -1.0 -8.6 8.0 -3.3</span><br><span class="line">-2.5 -9.8 9.2 -0.8 -9.4 -0.5 1.6 1.5 3.4 -0.1 7.0 -6.2</span><br><span class="line">-1.0 4.9 2.2 -8.7 -0.9 4.8 2.3 2.0 -3.2 -7.5 -4.0 9.9</span><br><span class="line">-1.1 -2.9 8.7 3.6 7.4 7.8 10.0 -9.0 1.6 8.3 6.3 -5.8</span><br><span class="line">-9.9 0.6 2.0 -3.8 -6.3 0.6 7.3 3.8 -7.1 9.5 2.2 1.3</span><br><span class="line">-2.8 -9.1 7.1 -0.2 0.6 -6.5 1.1 -0.1 -3.6 4.0 -5.4 1.1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-14"><a href="#输出样例：-14" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-2.8</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-15"><a href="#答案-15" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">12</span>][<span class="number">12</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">double</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    cin &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">    <span class="type">int</span> c=<span class="number">0</span>;       </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i<span class="number">-1</span>;j++)&#123;</span><br><span class="line">            sum += a[i][j];</span><br><span class="line">            c++;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;S&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;M&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum/c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="750-数组的下方区域"><a href="#750-数组的下方区域" class="headerlink" title="750. 数组的下方区域"></a>750. 数组的下方区域</h1><h2 id="题目-15"><a href="#题目-15" class="headerlink" title="题目"></a>题目</h2><p>输入一个二维数组 M[12][12] ，根据输入的要求，求出二维数组的下方区域元素的平均值或元素的和。</p>
+<p>数组的两条对角线将数组分为了上下左右四个部分，如下图所示，黄色部分为对角线，绿色部分为下方区域：</p>
+<p><img src="https://cdn.acwing.com/media/article/image/2019/05/03/19_eaad51506d-UOJ_1188.png" alt="UOJ_1188.png"></p>
+<h4 id="输入格式-16"><a href="#输入格式-16" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个大写字母，若为 <code>S</code>，则表示需要求出下方区域的元素的和，若为 <code>M</code>，则表示需要求出下方区域的元素的平均值。</p>
+<p>接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第 i+1 行的第 j+1 个数表示数组元素 M[i][j] 。</p>
+<h4 id="输出格式-16"><a href="#输出格式-16" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个数，表示所求的平均数或和的值，保留一位小数。</p>
+<h4 id="数据范围-15"><a href="#数据范围-15" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100.0≤M[i][j]≤100.0 </p>
+<h4 id="输入样例：-14"><a href="#输入样例：-14" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">S</span><br><span class="line">-6.0 0.7 -8.4 -5.7 -4.1 7.6 9.5 -9.7 4.1 0.6 -6.5 -4.9</span><br><span class="line">6.6 4.9 -3.1 5.3 0.3 -4.5 3.9 -1.5 6.6 7.0 5.1 2.5</span><br><span class="line">-8.5 1.8 -2.7 0.1 -4.9 -7.2 4.3 6.0 -1.4 2.7 -3.0 2.0</span><br><span class="line">4.8 -7.0 -1.3 0.8 1.0 4.5 -1.1 -2.9 -3.9 -3.9 -8.9 5.8</span><br><span class="line">-2.1 -9.6 5.1 0.2 1.0 -1.7 6.4 4.1 2.8 -6.9 2.4 9.3</span><br><span class="line">-6.0 -9.1 -7.0 -7.0 7.8 5.1 6.9 -7.6 0.4 -7.2 5.5 6.0</span><br><span class="line">-1.9 5.5 1.9 -8.5 -5.3 2.3 -9.3 2.0 -0.2 1.2 5.6 -1.8</span><br><span class="line">8.2 2.3 3.5 1.4 4.0 -5.1 -6.9 -2.8 1.7 -7.0 7.8 1.8</span><br><span class="line">-6.0 -4.1 -4.6 -9.4 -4.9 -4.1 4.2 6.3 -2.8 8.7 8.1 -0.9</span><br><span class="line">8.8 -6.5 -4.3 6.1 -6.2 -3.9 -7.0 7.3 5.0 -0.9 -0.0 5.6</span><br><span class="line">-2.4 1.4 8.5 -2.2 0.9 5.3 3.6 8.8 -8.1 3.0 -3.1 6.5</span><br><span class="line">-3.8 -6.4 2.3 4.2 -9.8 -0.3 -9.9 -7.4 3.5 1.5 -0.2 7.0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-15"><a href="#输出样例：-15" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-11.9</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-16"><a href="#答案-16" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">12</span>][<span class="number">12</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">double</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    cin &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">7</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">12</span>-i;j&lt;=i<span class="number">-1</span>;j++)</span><br><span class="line">            sum += a[i][j];</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;S&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;M&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum/<span class="number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="752-数组的右方区域"><a href="#752-数组的右方区域" class="headerlink" title="752. 数组的右方区域"></a>752. 数组的右方区域</h1><h2 id="题目-16"><a href="#题目-16" class="headerlink" title="题目"></a>题目</h2><p>输入一个二维数组 M[12][12] ，根据输入的要求，求出二维数组的右方区域元素的平均值或元素的和。</p>
+<p>数组的两条对角线将数组分为了上下左右四个部分，如下图所示，黄色部分为对角线，绿色部分为右方区域：</p>
+<p><img src="https://cdn.acwing.com/media/article/image/2019/05/03/19_c833ee0a6d-UOJ_1190.png" alt="UOJ_1190.png"></p>
+<h4 id="输入格式-17"><a href="#输入格式-17" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个大写字母，若为 <code>S</code>，则表示需要求出右方区域的元素的和，若为 <code>M</code>，则表示需要求出右方区域的元素的平均值。</p>
+<p>接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第 i+1 行的第 j+1 个数表示数组元素 M[i][j]。</p>
+<h4 id="输出格式-17"><a href="#输出格式-17" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个数，表示所求的平均数或和的值，保留一位小数。</p>
+<h4 id="数据范围-16"><a href="#数据范围-16" class="headerlink" title="数据范围"></a>数据范围</h4><p>−100.0≤M[i][j]≤100.0 </p>
+<h4 id="输入样例：-15"><a href="#输入样例：-15" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">S</span><br><span class="line">2.4 7.8 9.4 -5.6 6.9 -4.9 4.8 0.8 3.6 1.7 -1.4 9.7</span><br><span class="line">-6.8 -3.7 -2.0 -4.9 -4.5 -5.3 6.1 7.5 -4.3 5.9 -9.5 9.7</span><br><span class="line">-6.5 -0.4 1.6 3.7 -4.4 -3.3 1.9 7.7 -1.4 4.5 7.4 -3.0</span><br><span class="line">-1.2 0.4 9.8 9.8 -4.3 -1.3 -1.6 0.5 2.8 -4.0 8.5 3.9</span><br><span class="line">0.2 -2.0 -6.4 -9.8 3.7 -2.0 1.7 -3.6 -3.4 2.4 -1.2 -3.9</span><br><span class="line">-8.3 5.8 -1.0 -4.4 1.0 -2.4 2.8 -4.6 2.1 8.7 -6.8 -8.3</span><br><span class="line">6.3 -6.8 -7.0 9.3 -7.7 -1.7 8.2 -6.5 -1.8 6.7 8.2 4.4</span><br><span class="line">0.4 8.6 -1.2 8.6 -4.6 1.8 9.6 1.6 2.0 -1.0 3.9 -9.2</span><br><span class="line">7.5 -3.1 6.2 -4.5 -3.0 2.5 -7.7 2.9 0.3 3.3 -2.7 3.4</span><br><span class="line">-5.0 3.0 -0.0 4.3 9.5 -0.0 -9.9 -8.6 -0.9 -5.5 7.7 6.5</span><br><span class="line">4.9 -9.6 -2.9 8.5 2.0 -9.9 -4.9 -1.5 -2.4 -7.6 1.7 8.5</span><br><span class="line">-6.4 6.8 -3.7 -4.7 0.2 5.8 -5.4 0.6 7.0 -4.2 -7.5 -2.4</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-16"><a href="#输出样例：-16" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">40.9</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-17"><a href="#答案-17" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> a[<span class="number">12</span>][<span class="number">12</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">double</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">    cin &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">11</span>;i++)</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">6</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">12</span>-i;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            sum += a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">            sum += a[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;S&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="string">&#x27;M&#x27;</span>) <span class="built_in">printf</span>(<span class="string">&quot;%.1lf&quot;</span>,sum/<span class="number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="754-平方矩阵-II"><a href="#754-平方矩阵-II" class="headerlink" title="*754. 平方矩阵 II"></a>*754. 平方矩阵 II</h1><h2 id="题目-17"><a href="#题目-17" class="headerlink" title="题目"></a>题目</h2><p>输入整数 N，输出一个 N 阶的二维数组。</p>
+<p>数组的形式参照样例。</p>
+<h4 id="输入格式-18"><a href="#输入格式-18" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入包含多行，每行包含一个整数 N。</p>
+<p>当输入行为 N&#x3D;0时，表示输入结束，且该行无需作任何处理。</p>
+<h4 id="输出格式-18"><a href="#输出格式-18" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个输入整数  N，输出一个满足要求的 N  阶二维数组。</p>
+<p>每个数组占  N 行，每行包含 N  个用空格隔开的整数。</p>
+<p>每个数组输出完毕后，输出一个空行。</p>
+<h4 id="数据范围-17"><a href="#数据范围-17" class="headerlink" title="数据范围"></a>数据范围</h4><p>0≤N≤100 </p>
+<h4 id="输入样例：-16"><a href="#输入样例：-16" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-17"><a href="#输出样例：-17" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"></span><br><span class="line">1 2</span><br><span class="line">2 1</span><br><span class="line"></span><br><span class="line">1 2 3</span><br><span class="line">2 1 2</span><br><span class="line">3 2 1</span><br><span class="line"></span><br><span class="line">1 2 3 4</span><br><span class="line">2 1 2 3</span><br><span class="line">3 2 1 2</span><br><span class="line">4 3 2 1</span><br><span class="line"></span><br><span class="line">1 2 3 4 5</span><br><span class="line">2 1 2 3 4</span><br><span class="line">3 2 1 2 3</span><br><span class="line">4 3 2 1 2</span><br><span class="line">5 4 3 2 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-18"><a href="#答案-18" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a[<span class="number">100</span>][<span class="number">100</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(cin &gt;&gt; n,n)&#123; </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            a[i][i]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>,k=<span class="number">2</span>;j&lt;n;j++,k++) a[i][j]=k;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>,k=<span class="number">2</span>;j&lt;n;j++,k++) a[j][i]=k;<span class="comment">//关于1对称，交换一下i和j就可以了</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                cout &lt;&lt; a[i][j] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">            &#125;cout &lt;&lt; endl;</span><br><span class="line">        &#125;cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>​	也有一个规律i-j的绝对值加1就是每一个数</li>
+</ul>
+<h1 id="755-平方矩阵-III"><a href="#755-平方矩阵-III" class="headerlink" title="755.平方矩阵 III"></a>755.平方矩阵 III</h1><h2 id="题目-18"><a href="#题目-18" class="headerlink" title="题目"></a>题目</h2><p>输入整数 N，输出一个 N 阶的二维数组 M。</p>
+<p>这个 N 阶二维数组满足 M[i][j]&#x3D;2i+j 。</p>
+<p>具体形式可参考样例。</p>
+<h4 id="输入格式-19"><a href="#输入格式-19" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入包含多行，每行包含一个整数 N。</p>
+<p>当输入行为 N&#x3D;0 时，表示输入结束，且该行无需作任何处理。</p>
+<h4 id="输出格式-19"><a href="#输出格式-19" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个输入整数 N，输出一个满足要求的 N 阶二维数组。</p>
+<p>每个数组占 N 行，每行包含 N 个用空格隔开的整数。</p>
+<p>每个数组输出完毕后，输出一个空行。</p>
+<h4 id="数据范围-18"><a href="#数据范围-18" class="headerlink" title="数据范围"></a>数据范围</h4><p>0≤N≤15 </p>
+<h4 id="输入样例：-17"><a href="#输入样例：-17" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-18"><a href="#输出样例：-18" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"></span><br><span class="line">1 2</span><br><span class="line">2 4</span><br><span class="line"></span><br><span class="line">1 2 4</span><br><span class="line">2 4 8</span><br><span class="line">4 8 16</span><br><span class="line"></span><br><span class="line">1 2 4 8</span><br><span class="line">2 4 8 16</span><br><span class="line">4 8 16 32</span><br><span class="line">8 16 32 64</span><br><span class="line"></span><br><span class="line">1 2 4 8 16</span><br><span class="line">2 4 8 16 32</span><br><span class="line">4 8 16 32 64</span><br><span class="line">8 16 32 64 128</span><br><span class="line">16 32 64 128 256</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-19"><a href="#答案-19" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="type">int</span> a[<span class="number">20</span>][<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">while</span>(cin &gt;&gt; n,n)&#123;</span><br><span class="line">        <span class="type">int</span> ret=<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> k=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            ret*=<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">0</span>) ret=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                a[i][j]=ret;</span><br><span class="line">                ret*=<span class="number">2</span>;</span><br><span class="line">            &#125;ret=a[k][<span class="number">0</span>];<span class="comment">//ret每次都等于上一行乘2</span></span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        	<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">        		cout &lt;&lt; a[i][j] &lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">			&#125;cout &lt;&lt; endl;</span><br><span class="line">		&#125;cout &lt;&lt; endl;</span><br><span class="line">		 </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(cin &gt;&gt; n,n)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                <span class="type">int</span> v=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;i+j;k++) </span><br><span class="line">                    v*=<span class="number">2</span>;</span><br><span class="line">                cout &lt;&lt; v &lt;&lt; <span class="string">&#x27; &#x27;</span>;<span class="comment">//每一个v都要乘i+j个2</span></span><br><span class="line">            &#125;cout &lt;&lt; endl;</span><br><span class="line">        &#125;cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="756-蛇形矩阵"><a href="#756-蛇形矩阵" class="headerlink" title="*756. 蛇形矩阵"></a>*756. 蛇形矩阵</h1><h2 id="题目-19"><a href="#题目-19" class="headerlink" title="题目"></a>题目</h2><p>输入两个整数  n 和 m，输出一个 n 行 m 列的矩阵，将数字 1 到 n×m 按照回字蛇形填充至矩阵中。</p>
+<p>具体矩阵形式可参考样例。</p>
+<h4 id="输入格式-20"><a href="#输入格式-20" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入共一行，包含两个整数 n 和  m。</p>
+<h4 id="输出格式-20"><a href="#输出格式-20" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出满足要求的矩阵。</p>
+<p>矩阵占  n 行，每行包含 m 个空格隔开的整数。</p>
+<h4 id="数据范围-19"><a href="#数据范围-19" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n,m≤100  </p>
+<h4 id="输入样例：-18"><a href="#输入样例：-18" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-19"><a href="#输出样例：-19" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3</span><br><span class="line">8 9 4</span><br><span class="line">7 6 5</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案-20"><a href="#答案-20" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> res[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="type">int</span> dx[]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>&#125;,dy[]=&#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span>&#125;;<span class="comment">//偏移量</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">0</span>,y=<span class="number">0</span>,d=<span class="number">0</span>,k=<span class="number">1</span>;k&lt;=n*m;k++)&#123;</span><br><span class="line">        res[x][y]=k;</span><br><span class="line">        <span class="type">int</span> a=x+dx[d],b=y+dy[d];</span><br><span class="line">        <span class="keyword">if</span>(a&gt;=n || a&lt;<span class="number">0</span> || b&gt;=m || b&lt;<span class="number">0</span> || res[a][b])&#123;<span class="comment">//撞墙或重复则改变方向（没有填数的地方是0）</span></span><br><span class="line">            d=(d+<span class="number">1</span>)%<span class="number">4</span>;<span class="comment">//改变方向即横纵坐标规律变成下一个，规律总共有四个</span></span><br><span class="line">            a=x+dx[d],b=y+dy[d];</span><br><span class="line">        &#125;x=a,y=b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;m;j++)&#123;</span><br><span class="line">            cout &lt;&lt; res[i][j] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        &#125;cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>![img](file:&#x2F;&#x2F;&#x2F;C:\Users\鑫霜\Documents\Tencent Files\1442566547\Image\C2C\92AC82FD9013711A30F86070AD0772BA.jpg)</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>鼓励一下作者吧！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="xinStar 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+              <a href="/tags/Acwing/" rel="tag"><i class="fa fa-tag"></i> Acwing</a>
+              <a href="/tags/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" rel="tag"><i class="fa fa-tag"></i> 语法基础</a>
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"><i class="fa fa-tag"></i> 数组</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/03/04/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/%E7%B1%BB%EF%BC%8C%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%8C%E6%8C%87%E9%92%88%EF%BC%8C%E5%BC%95%E7%94%A8/" rel="prev" title="acwing C++语法基础课类、结构体、指针和引用章节习题">
+      <i class="fa fa-chevron-left"></i> acwing C++语法基础课类、结构体、指针和引用章节习题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/03/04/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/" rel="next" title="acwing C++语法基础课选择结构章节习题">
+      acwing C++语法基础课选择结构章节习题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E9%9D%A2%E6%9B%B4%E5%A4%A7%E7%9A%84%E4%B8%AA%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">前面更大的个数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-number">1.1.3.</span> <span class="nav-text">输入输出样例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88"><span class="nav-number">1.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#737-%E6%95%B0%E7%BB%84%E6%9B%BF%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">737. 数组替换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">2.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-number">2.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">2.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">2.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-1"><span class="nav-number">2.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#738-%E6%95%B0%E7%BB%84%E5%A1%AB%E5%85%85"><span class="nav-number">3.</span> <span class="nav-text">738. 数组填充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="nav-number">3.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-1"><span class="nav-number">3.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-1"><span class="nav-number">3.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-1"><span class="nav-number">3.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-2"><span class="nav-number">3.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#739-%E6%95%B0%E7%BB%84%E9%80%89%E6%8B%A9"><span class="nav-number">4.</span> <span class="nav-text">739. 数组选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="nav-number">4.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-2"><span class="nav-number">4.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-2"><span class="nav-number">4.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-2"><span class="nav-number">4.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-3"><span class="nav-number">4.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#743-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E8%A1%8C"><span class="nav-number">5.</span> <span class="nav-text">743. 数组中的行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="nav-number">5.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-3"><span class="nav-number">5.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-3"><span class="nav-number">5.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-3"><span class="nav-number">5.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-4"><span class="nav-number">5.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#745-%E6%95%B0%E7%BB%84%E7%9A%84%E5%8F%B3%E4%B8%8A%E5%8D%8A%E9%83%A8%E5%88%86"><span class="nav-number">6.</span> <span class="nav-text">745. 数组的右上半部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="nav-number">6.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-4"><span class="nav-number">6.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-4"><span class="nav-number">6.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-4"><span class="nav-number">6.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-5"><span class="nav-number">6.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#747-%E6%95%B0%E7%BB%84%E7%9A%84%E5%B7%A6%E4%B8%8A%E5%8D%8A%E9%83%A8%E5%88%86"><span class="nav-number">7.</span> <span class="nav-text">747. 数组的左上半部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-5"><span class="nav-number">7.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-5"><span class="nav-number">7.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-5"><span class="nav-number">7.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-5"><span class="nav-number">7.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-6"><span class="nav-number">7.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#749-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8A%E6%96%B9%E5%8C%BA%E5%9F%9F"><span class="nav-number">8.</span> <span class="nav-text">749. 数组的上方区域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-6"><span class="nav-number">8.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">8.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">8.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-6"><span class="nav-number">8.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-6"><span class="nav-number">8.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-6"><span class="nav-number">8.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-7"><span class="nav-number">8.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#751-%E6%95%B0%E7%BB%84%E7%9A%84%E5%B7%A6%E6%96%B9%E5%8C%BA%E5%9F%9F"><span class="nav-number">9.</span> <span class="nav-text">751. 数组的左方区域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-7"><span class="nav-number">9.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-8"><span class="nav-number">9.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-8"><span class="nav-number">9.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-7"><span class="nav-number">9.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-7"><span class="nav-number">9.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-7"><span class="nav-number">9.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-8"><span class="nav-number">9.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#753-%E5%B9%B3%E6%96%B9%E7%9F%A9%E9%98%B5-I"><span class="nav-number">10.</span> <span class="nav-text">*753. 平方矩阵 I</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-8"><span class="nav-number">10.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-9"><span class="nav-number">10.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-9"><span class="nav-number">10.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-8"><span class="nav-number">10.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-8"><span class="nav-number">10.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-8"><span class="nav-number">10.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-9"><span class="nav-number">10.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#740-%E6%95%B0%E7%BB%84%E5%8F%98%E6%8D%A2"><span class="nav-number">11.</span> <span class="nav-text">740. 数组变换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-9"><span class="nav-number">11.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-10"><span class="nav-number">11.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-10"><span class="nav-number">11.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-9"><span class="nav-number">11.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-9"><span class="nav-number">11.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-9"><span class="nav-number">11.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-10"><span class="nav-number">11.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#741-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="nav-number">12.</span> <span class="nav-text">741. 斐波那契数列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-10"><span class="nav-number">12.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-11"><span class="nav-number">12.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-11"><span class="nav-number">12.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-10"><span class="nav-number">12.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-10"><span class="nav-number">12.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-10"><span class="nav-number">12.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-11"><span class="nav-number">12.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#742-%E6%9C%80%E5%B0%8F%E6%95%B0%E5%92%8C%E5%AE%83%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">13.</span> <span class="nav-text">742. 最小数和它的位置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-11"><span class="nav-number">13.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-12"><span class="nav-number">13.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-12"><span class="nav-number">13.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-11"><span class="nav-number">13.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-11"><span class="nav-number">13.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-11"><span class="nav-number">13.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-12"><span class="nav-number">13.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#744-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%88%97"><span class="nav-number">14.</span> <span class="nav-text">744. 数组中的列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-12"><span class="nav-number">14.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-13"><span class="nav-number">14.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-13"><span class="nav-number">14.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-12"><span class="nav-number">14.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-12"><span class="nav-number">14.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-12"><span class="nav-number">14.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-13"><span class="nav-number">14.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#748-%E6%95%B0%E7%BB%84%E7%9A%84%E5%8F%B3%E4%B8%8B%E5%8D%8A%E9%83%A8%E5%88%86"><span class="nav-number">15.</span> <span class="nav-text">748. 数组的右下半部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-13"><span class="nav-number">15.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-14"><span class="nav-number">15.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-14"><span class="nav-number">15.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-13"><span class="nav-number">15.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-13"><span class="nav-number">15.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-13"><span class="nav-number">15.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-14"><span class="nav-number">15.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#746-%E6%95%B0%E7%BB%84%E7%9A%84%E5%B7%A6%E4%B8%8B%E5%8D%8A%E9%83%A8%E5%88%86"><span class="nav-number">16.</span> <span class="nav-text">746. 数组的左下半部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-14"><span class="nav-number">16.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-15"><span class="nav-number">16.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-15"><span class="nav-number">16.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-14"><span class="nav-number">16.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-14"><span class="nav-number">16.1.0.4.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-15"><span class="nav-number">16.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#750-%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%96%B9%E5%8C%BA%E5%9F%9F"><span class="nav-number">17.</span> <span class="nav-text">750. 数组的下方区域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-15"><span class="nav-number">17.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-16"><span class="nav-number">17.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-16"><span class="nav-number">17.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-15"><span class="nav-number">17.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-14"><span class="nav-number">17.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-15"><span class="nav-number">17.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-16"><span class="nav-number">17.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#752-%E6%95%B0%E7%BB%84%E7%9A%84%E5%8F%B3%E6%96%B9%E5%8C%BA%E5%9F%9F"><span class="nav-number">18.</span> <span class="nav-text">752. 数组的右方区域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-16"><span class="nav-number">18.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-17"><span class="nav-number">18.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-17"><span class="nav-number">18.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-16"><span class="nav-number">18.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-15"><span class="nav-number">18.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-16"><span class="nav-number">18.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-17"><span class="nav-number">18.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#754-%E5%B9%B3%E6%96%B9%E7%9F%A9%E9%98%B5-II"><span class="nav-number">19.</span> <span class="nav-text">*754. 平方矩阵 II</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-17"><span class="nav-number">19.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-18"><span class="nav-number">19.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-18"><span class="nav-number">19.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-17"><span class="nav-number">19.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-16"><span class="nav-number">19.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-17"><span class="nav-number">19.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-18"><span class="nav-number">19.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#755-%E5%B9%B3%E6%96%B9%E7%9F%A9%E9%98%B5-III"><span class="nav-number">20.</span> <span class="nav-text">755.平方矩阵 III</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-18"><span class="nav-number">20.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-19"><span class="nav-number">20.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-19"><span class="nav-number">20.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-18"><span class="nav-number">20.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-17"><span class="nav-number">20.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-18"><span class="nav-number">20.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-19"><span class="nav-number">20.2.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#756-%E8%9B%87%E5%BD%A2%E7%9F%A9%E9%98%B5"><span class="nav-number">21.</span> <span class="nav-text">*756. 蛇形矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-19"><span class="nav-number">21.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-20"><span class="nav-number">21.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-20"><span class="nav-number">21.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-19"><span class="nav-number">21.1.0.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-18"><span class="nav-number">21.1.0.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-19"><span class="nav-number">21.1.0.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%94%E6%A1%88-20"><span class="nav-number">21.2.</span> <span class="nav-text">答案</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xinStar"
+      src="/images/header.png">
+  <p class="site-author-name" itemprop="name">xinStar</p>
+  <div class="site-description" itemprop="description">热爱漫无边际，生命自有分寸</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wcm52" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wcm52" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">鑫霜</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">140k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:07</span>
+</div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'SBQauIpxBnhv657uLZBAm6Ec-gzGzoHsz',
+      appKey     : 'FbGXaai1FyAN9WenkbSHpOPT',
+      placeholder: "添加呢称与邮箱有助于更快获得回复哦",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

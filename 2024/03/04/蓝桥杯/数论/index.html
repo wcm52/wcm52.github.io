@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="google-site-verification" content="bybDl7crMHVqNN1J7f-Y_CEFbc2Hlo4IdKePDAGM52g" />
+<meta name="msvalidate.01" content="E472E4B2174B4AF4C43D027E30CC7B91" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/book32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/book16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wcm52.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":{"valine":null,"order":-1},"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="欧几里得算法a和b的最大公约数就等于 b和a mod b的最大公约数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="acwing 蓝桥杯辅导课数论章节习题">
+<meta property="og:url" content="https://wcm52.github.io/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E8%AE%BA/index.html">
+<meta property="og:site_name" content="xinStar">
+<meta property="og:description" content="欧几里得算法a和b的最大公约数就等于 b和a mod b的最大公约数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/03/04/JwN42IylYGhgbOF.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/04/pHJd2VjgTrB6nfq.png">
+<meta property="og:image" content="https://images0.cnblogs.com/i/574543/201407/172319235992161.png">
+<meta property="og:image" content="https://images0.cnblogs.com/i/574543/201407/172319235992161.png">
+<meta property="article:published_time" content="2024-03-04T01:51:44.290Z">
+<meta property="article:modified_time" content="2024-03-04T01:51:44.636Z">
+<meta property="article:author" content="xinStar">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Acwing">
+<meta property="article:tag" content="数论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/03/04/JwN42IylYGhgbOF.png">
+
+<link rel="canonical" href="https://wcm52.github.io/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E8%AE%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>acwing 蓝桥杯辅导课数论章节习题 | xinStar</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xinStar</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wcm52.github.io/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.png">
+      <meta itemprop="name" content="xinStar">
+      <meta itemprop="description" content="热爱漫无边际，生命自有分寸">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xinStar">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          acwing 蓝桥杯辅导课数论章节习题
+        </h1>
+
+        <div class="post-meta">
+		  
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-04 09:51:44" itemprop="dateCreated datePublished" datetime="2024-03-04T09:51:44+08:00">2024-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/%E4%B9%A0%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">习题</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/%E4%B9%A0%E9%A2%98/%E8%93%9D%E6%A1%A5%E6%9D%AF/" itemprop="url" rel="index"><span itemprop="name">蓝桥杯</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E8%AE%BA/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E8%AE%BA/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="欧几里得算法"><a href="#欧几里得算法" class="headerlink" title="欧几里得算法"></a>欧几里得算法</h2><p>a和b的最大公约数就等于 b和a mod b的最大公约数</p>
+<p><img src="https://s2.loli.net/2024/03/04/JwN42IylYGhgbOF.png" alt="image-20220309164748729"><span id="more"></span></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? <span class="built_in">gcd</span>(b,a % b): a;<span class="comment">//b如果等于0的话，最大公约数就是a本身</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">gcd</span>(a,b) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="裴属定理-扩展欧几里得算法"><a href="#裴属定理-扩展欧几里得算法" class="headerlink" title="裴属定理(扩展欧几里得算法)"></a>裴属定理(扩展欧几里得算法)</h3><p>若a和b的最大公约数是d，则一定存在x,y，使得$ax+by &#x3D; d$（x,y是整数）</p>
+<p>只要得出一组解$ax_0+by_0&#x3D;d$，则其他的解可以表示为</p>
+<p>$x&#x3D;x_0+kb^&#96;$</p>
+<p>$y &#x3D; y_0-ka^&#96;$</p>
+<p>($b^<code>= &#123;b\over d&#125;,a^</code>&#x3D;{a\over d}$)</p>
+<p>求其中一组可行解x<del>0</del>，y<del>0</del></p>
+<p><img src="https://s2.loli.net/2024/03/04/pHJd2VjgTrB6nfq.png" alt="image-20220319193038114"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Exgcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> &amp;x, <span class="type">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">    x = <span class="number">1</span>;</span><br><span class="line">    y = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="type">int</span> d = <span class="built_in">Exgcd</span>(b, a % b, x, y);</span><br><span class="line">  <span class="type">int</span> t = x;</span><br><span class="line">  x = y;</span><br><span class="line">  y = t - (a / b) * y;</span><br><span class="line">  <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="算术基本定理"><a href="#算术基本定理" class="headerlink" title="算术基本定理"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liugl7/p/6263221.html">算术基本定理</a></h2><h3 id="算数基本定理："><a href="#算数基本定理：" class="headerlink" title="算数基本定理："></a>算数基本定理：</h3><p>每一个大于1的数都可以被唯一的写成素数的乘积，在乘积中的素因子按照非降序排列，即所有的正整数都可以唯一的分成若干个质因子乘积的形式</p>
+<p>正整数$x$的分解式$x&#x3D;p_1^{a_1}\times p_2^{a_2}\times p_3^{a_3}\times …\times p_k^{a_k}$称为n的标准分解式，其中$p1, p2, p3, ···,pk$ 是素数，$p1&lt;p2&lt;p3&lt;···&lt;pk$  且$a1,a2,a3···an$是正整数。</p>
+<h3 id="x的约数个数为："><a href="#x的约数个数为：" class="headerlink" title="x的约数个数为："></a><strong>x的约数个数</strong>为：</h3><p>$(a_1+1)\times (a_2+1)\times (a_3+1)\times a_{n+1}$</p>
+<p>证：x的约数可以任意从 p<del>1</del> 到 p<del>k</del> 之间选择， p<del>1</del> 有$(a_1+1)$种选法，p<del>k</del> 有$(a_k+1)$种选法，所以最终个数就是所有的乘起来（因为每一个数也可以不选，所以会加一）</p>
+<h3 id="x的约数和："><a href="#x的约数和：" class="headerlink" title="x的约数和："></a>x的约数和：</h3><p>$(1+p_1+p_1^2+p_1^3+…+p_1^{a_1})(1+p_2+p_2^2+…+p_2^{a_2})…(1+p_k+p_k^2…+p_k^{a_k})$</p>
+<p>展开即可，对应上面的约数个数（从每种之间选一个组成的乘积就是约数）</p>
+<h2 id="线性筛法求素数-欧拉筛法"><a href="#线性筛法求素数-欧拉筛法" class="headerlink" title="线性筛法求素数(欧拉筛法)"></a>线性筛法求素数(欧拉筛法)</h2><p>大致原理为 从2开始筛选素数 将每次筛选好的素数存储到primes 数组中然后将含有该素数因子的合数全部筛掉 用此算法的时间复杂度可以达到O(n);</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> primes[N];<span class="comment">//存素数</span></span><br><span class="line"><span class="type">int</span> cnt;<span class="comment">//存素数个数</span></span><br><span class="line"><span class="type">bool</span> st[N];<span class="comment">//0代表是素数，1代表不是素数，刚开始先假设所有数都是素数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_primes</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(st[i] == <span class="number">0</span>) primes[cnt++] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; cnt; j++)<span class="comment">//筛掉含有素数因子的合数</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(primes[j] * i &gt; n) <span class="keyword">break</span>;<span class="comment">//如果质数的i倍大于我们要求的范围，则结束循环</span></span><br><span class="line">            st[primes[j] * i] = <span class="literal">true</span>;<span class="comment">// 把质数的i倍筛掉</span></span><br><span class="line">             </span><br><span class="line">            <span class="keyword">if</span>(i % primes[j] == <span class="number">0</span>) <span class="keyword">break</span>;<span class="comment">// 通过最小质因子来筛，即如果i不是素数，则结束本轮循环，不用i来筛后面的合数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">get_primes</span>(<span class="number">100000</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,primes[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://images0.cnblogs.com/i/574543/201407/172319235992161.png"></p>
+<p>每一个合数都是用最小质因子筛掉的，比如6是用2筛掉的，10也是用2筛掉的，即 j &#x3D; 0 时，如上图</p>
+<ul>
+<li>因为prime中素数是递增的，所以如果i%prime[j]!&#x3D;0代表i的最小质因数还没有找到，即i的最小质因数大于prime[j]，也就是说prime[j]就是i*prime[j]的最小质因数，于是i*prime[j]被它的最小质因数筛掉了</li>
+<li>如果当i%prime[j]&#x3D;&#x3D;0时，代表i的最小质因数是prime[j]，那么i*prime[j+k](k&gt;0)这个合数的最小质因数就不是prime[j+k]而是prime[j]了，所以i*prime[j+k]应该被prime[j]筛掉，而不是后续的prime[j+k]，于是在此时break</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/97535/">参考</a> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/grubbyskyer/p/3852421.html">参考</a></p>
+<h2 id="1246-等差数列"><a href="#1246-等差数列" class="headerlink" title="1246. 等差数列"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/98586/">1246. 等差数列</a></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1248/">题目</a></h3><p>数学老师给小明出了一道等差数列求和的题目。但是粗心的小明忘记了一部分的数列，只记得其中 <em>N</em> 个整数。</p>
+<p>现在给出这 <em>N</em> 个整数，小明想知道包含这 <em>N</em> 个整数的最短的等差数列有几项？</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入的第一行包含一个整数 <em>N</em>。</p>
+<p>第二行包含 <em>N</em> 个整数 <em>A</em>1,<em>A</em>2,⋅⋅⋅,<em>A**N</em>。(注意 <em>A</em>1∼<em>A**N</em> 并不一定是按等差数<br> 列中的顺序给出)</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数表示答案。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>2≤<em>N</em>≤100000,<br>0≤*A<sub>i</sub>*≤109</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">2 6 4 10 20</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例解释"><a href="#样例解释" class="headerlink" title="样例解释"></a>样例解释</h4><p>包含 2、6、4、10、20</p>
+<p> 的最短的等差数列是 2、4、6、8、10、12、14、16、18、20。</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ul>
+<li><p>等差数列每两个数之间的差值是kd，所以我们只要求出公差d，即所有差值的最大公约数，最后再求项数，即( a[n-1] - a[0] )&#x2F;d + 1;</p>
+</li>
+<li><p>还要单独特判公差等于0的情况</p>
+</li>
+</ul>
+<h3 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[N],d[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? <span class="built_in">gcd</span>(b,a % b) : a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a,a+n);<span class="comment">//进行排序</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">        d[i] = a[i] - a[i<span class="number">-1</span>];<span class="comment">//存每个相邻两个数的差</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a[<span class="number">0</span>] == a[n<span class="number">-1</span>]) cout &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="type">int</span> md = d[<span class="number">1</span>];<span class="comment">//假设公差是第一个差值</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">         md = <span class="built_in">gcd</span>(md,d[i+<span class="number">1</span>]);<span class="comment">//求所有数的最大公约数</span></span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="type">int</span> res = (a[n<span class="number">-1</span>] - a[<span class="number">0</span>])/md + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">        cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1295-X的因子链"><a href="#1295-X的因子链" class="headerlink" title="1295. X的因子链"></a>1295. X的因子链</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1297/">题目</a></h3><p>输入正整数 <em>X</em>，求 <em>X</em> 的大于 1 的因子组成的满足任意前一项都能整除后一项的严格递增序列的最大长度，以及满足最大长度的序列的个数。</p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入包含多组数据，每组数据占一行，包含一个正整数表示 <em>X</em>。</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每组数据，输出序列的最大长度以及满足最大长度的序列的个数。</p>
+<p>每个结果占一行。</p>
+<h4 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>X</em>≤220</p>
+<h4 id="输入样例：-1"><a href="#输入样例：-1" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">10</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-1"><a href="#输出样例：-1" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 1</span><br><span class="line">1 1</span><br><span class="line">2 1</span><br><span class="line">2 2</span><br><span class="line">4 6</span><br></pre></td></tr></table></figure>
+
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>输入x，求 x 的因子满足</p>
+<ol>
+<li>因子不包括1</li>
+<li>因子单调递增</li>
+<li>后一项可以整除前一项</li>
+</ol>
+<p>的最长序列，输出长度和序列个数</p>
+<h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><h4 id="算术基本定理-1"><a href="#算术基本定理-1" class="headerlink" title="算术基本定理"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liugl7/p/6263221.html">算术基本定理</a></h4><p>每一个大于1的数都可以被唯一的写成素数的乘积，在乘积中的素因子按照非降序排列，即所有的正整数都可以唯一的分成若干个质因子乘积的形式</p>
+<p>正整数 $x$的分解式$x&#x3D;p_1^{a_1}\times p_2^{a_2}\times p_3^{a_3}\times …\times p_k^{a_k}$称为$x$的标准分解式，其中$p1, p2, p3, ···,pk $是素数，$p_1 &lt; p_2 &lt; … &lt; p_k$且 $a_1,a_2,a_3···a_n$是正整数。</p>
+<p>所以我们可以将 X 分解成上述形式，一共就有 $a_1+a_2+a_3+…..+a_k $个质因子，（其中有重复的质因子，$a_1$个$p_1$，$a_2$个$p_2$…)</p>
+<p>要保证序列最长，则倍数为质因数可以保证序列最长，（如果不是质因数，则还可以在中间插入一项），所以最长序列为 $a_1+a_2+a_3+…..+a_k$</p>
+<p>假设序列为 $x1, x2, x3, x4….. xn$</p>
+<p>对应的映射 $x1$,   $x2\over x1$ , $x3\over x2$, $x4\over x3$……$\frac{x4}{x_{n-1}}$</p>
+<p>每两个数之间的倍数都是 $x$ 的质因数，所以求不同的序列相当于求 $x$ 质因数的不同排列方式，去重排列组合:</p>
+<p>$\frac{(a_1+a_2+a_3+…..+a_k)!}{a_1!\times a_2! \times…\times a_k}$</p>
+<h4 id="线性筛法求素数-欧拉筛法-1"><a href="#线性筛法求素数-欧拉筛法-1" class="headerlink" title="线性筛法求素数(欧拉筛法)"></a>线性筛法求素数(欧拉筛法)</h4><p>大致原理为 从2开始筛选素数 将每次筛选好的素数存储到primes 数组中然后将含有该素数因子的合数全部筛掉 用此算法的时间复杂度可以达到O(n);</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> primes[N];<span class="comment">//存素数</span></span><br><span class="line"><span class="type">int</span> cnt;<span class="comment">//存素数个数</span></span><br><span class="line"><span class="type">bool</span> st[N];<span class="comment">//0代表是素数，1代表不是素数，刚开始先假设所有数都是素数</span></span><br><span class="line"><span class="type">int</span> minp[N];<span class="comment">//存最小质因子</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_primes</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(st[i] == <span class="number">0</span>) primes[cnt++] = i,minp[i] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; cnt; j++)<span class="comment">//筛掉含有素数因子的合数</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(primes[j] * i &gt; n) <span class="keyword">break</span>;<span class="comment">//如果质数的i倍大于我们要求的范围，则结束循环</span></span><br><span class="line">            st[primes[j] * i] = <span class="literal">true</span>;<span class="comment">// 把质数的i倍筛掉</span></span><br><span class="line">            minp[primes[j] * i] = primes[j];</span><br><span class="line">             </span><br><span class="line">            <span class="keyword">if</span>(i % primes[j] == <span class="number">0</span>) <span class="keyword">break</span>;<span class="comment">// 通过最小质因子来筛，即如果i不是素数，则结束本轮循环，不用i来筛后面的合数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">get_primes</span>(<span class="number">100000</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,primes[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://images0.cnblogs.com/i/574543/201407/172319235992161.png"></p>
+<p>每一个合数都是用最小质因子筛掉的，比如6是用2筛掉的，10也是用2筛掉的，即 j &#x3D; 0 时，如上图</p>
+<ul>
+<li>因为prime中素数是递增的，所以如果i%prime[j]!&#x3D;0代表i的最小质因数还没有找到，即i的最小质因数大于prime[j]，也就是说prime[j]就是i*prime[j]的最小质因数，于是i*prime[j]被它的最小质因数筛掉了</li>
+<li>如果当i%prime[j]&#x3D;&#x3D;0时，代表i的最小质因数是prime[j]，那么i*prime[j+k](k&gt;0)这个合数的最小质因数就不是prime[j+k]而是prime[j]了，所以i*prime[j+k]应该被prime[j]筛掉，而不是后续的prime[j+k]，于是在此时break</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/97535/">参考</a> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/grubbyskyer/p/3852421.html">参考</a></p>
+<p>例：</p>
+<p>$12 &#x3D; 2^2 \times 3$</p>
+<p>$p1 &#x3D; 2，p2 &#x3D; 3$，$a_1 &#x3D; 2,a_2 &#x3D; 1$</p>
+<p>总共有$2 + 1 &#x3D; 3$个质因子，即2个2，1个3，则可能的情况：</p>
+<p>$1，2，2\times 2，2\times 2 \times3 $    倍数关系为2 2 3</p>
+<p>$1，2，2 \times 3，2\times 3 \times 2 $      倍数关系为2 3 2</p>
+<p>$1，3，3\times 2，3\times 2 \times 3$       倍数关系为3 2 2</p>
+<p>（1不算进去）</p>
+<p>所以长度为3，不同序列为3</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>最长的序列就是质因子的个数</li>
+<li>最长序列的个数就是质因子的去重排列数目</li>
+<li>通过线性筛法求素数来找出最小质因子，从而找出所有质因子及其个数</li>
+</ul>
+<h3 id="相关代码-1"><a href="#相关代码-1" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = (<span class="number">1</span> &lt;&lt; <span class="number">20</span>) + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> primes[N];<span class="comment">//存素数</span></span><br><span class="line"><span class="type">int</span> cnt;<span class="comment">//存素数个数</span></span><br><span class="line"><span class="type">bool</span> st[N];<span class="comment">//0代表是素数，1代表不是素数，刚开始先假设所有数都是素数</span></span><br><span class="line"><span class="type">int</span> minp[N];<span class="comment">//存最小质因子</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_primes</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(st[i] == <span class="number">0</span>) primes[cnt++] = i,minp[i] = i;<span class="comment">//是质数则最小公约数就是本身</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; cnt; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(primes[j] * i &gt; n) <span class="keyword">break</span>;</span><br><span class="line">            st[primes[j] * i] = <span class="literal">true</span>;</span><br><span class="line">            minp[primes[j] * i] = primes[j];</span><br><span class="line">            <span class="keyword">if</span>(i % primes[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">get_primes</span>(N);</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">int</span> sum[N];<span class="comment">//sum[N]存每个质因子出现的次数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x) != <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> tot = <span class="number">0</span>;<span class="comment">//tol存总的质因子数量</span></span><br><span class="line">        <span class="type">int</span> k = <span class="number">0</span>,sum[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(x &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> p = minp[x];</span><br><span class="line">            sum[k] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(x % p == <span class="number">0</span>)<span class="comment">//算质因子为p的个数</span></span><br><span class="line">            &#123;</span><br><span class="line">                sum[k]++;</span><br><span class="line">                tot++;</span><br><span class="line">                x /= p;</span><br><span class="line">            &#125;</span><br><span class="line">            k++;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//算去重排列数量</span></span><br><span class="line">        ll res = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= tot; i++) res *= i;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= sum[i]; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                res /= j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d %lld\n&quot;</span>,tot,res);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>鼓励一下作者吧！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="xinStar 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+              <a href="/tags/Acwing/" rel="tag"><i class="fa fa-tag"></i> Acwing</a>
+              <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"><i class="fa fa-tag"></i> 数论</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%9E%9A%E4%B8%BE%E3%80%81%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%8E%92%E5%BA%8F/" rel="prev" title="acwing 蓝桥杯辅导课枚举、模拟与排序章节习题">
+      <i class="fa fa-chevron-left"></i> acwing 蓝桥杯辅导课枚举、模拟与排序章节习题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/03/04/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" rel="next" title="acwing 蓝桥杯辅导课数学与简单DP章节习题">
+      acwing 蓝桥杯辅导课数学与简单DP章节习题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">欧几里得算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%B4%E5%B1%9E%E5%AE%9A%E7%90%86-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">裴属定理(扩展欧几里得算法)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">算术基本定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%95%B0%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">算数基本定理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#x%E7%9A%84%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E4%B8%BA%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">x的约数个数为：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#x%E7%9A%84%E7%BA%A6%E6%95%B0%E5%92%8C%EF%BC%9A"><span class="nav-number">2.3.</span> <span class="nav-text">x的约数和：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%AD%9B%E6%B3%95%E6%B1%82%E7%B4%A0%E6%95%B0-%E6%AC%A7%E6%8B%89%E7%AD%9B%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">线性筛法求素数(欧拉筛法)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1246-%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97"><span class="nav-number">4.</span> <span class="nav-text">1246. 等差数列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">4.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-number">4.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">4.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">4.1.5.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="nav-number">4.1.6.</span> <span class="nav-text">样例解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">4.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81"><span class="nav-number">4.3.</span> <span class="nav-text">相关代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1295-X%E7%9A%84%E5%9B%A0%E5%AD%90%E9%93%BE"><span class="nav-number">5.</span> <span class="nav-text">1295. X的因子链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="nav-number">5.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">5.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">5.1.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-1"><span class="nav-number">5.1.3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A-1"><span class="nav-number">5.1.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-1"><span class="nav-number">5.1.5.</span> <span class="nav-text">输出样例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">5.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="nav-number">5.3.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86-1"><span class="nav-number">5.3.1.</span> <span class="nav-text">算术基本定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%AD%9B%E6%B3%95%E6%B1%82%E7%B4%A0%E6%95%B0-%E6%AC%A7%E6%8B%89%E7%AD%9B%E6%B3%95-1"><span class="nav-number">5.3.2.</span> <span class="nav-text">线性筛法求素数(欧拉筛法)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.3.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81-1"><span class="nav-number">5.4.</span> <span class="nav-text">相关代码</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xinStar"
+      src="/images/header.png">
+  <p class="site-author-name" itemprop="name">xinStar</p>
+  <div class="site-description" itemprop="description">热爱漫无边际，生命自有分寸</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wcm52" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wcm52" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">鑫霜</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">140k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:07</span>
+</div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'SBQauIpxBnhv657uLZBAm6Ec-gzGzoHsz',
+      appKey     : 'FbGXaai1FyAN9WenkbSHpOPT',
+      placeholder: "添加呢称与邮箱有助于更快获得回复哦",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
